@@ -210,7 +210,7 @@ export default {
         justify-content: space-between;
         padding-bottom: 0.75rem;
     }
-    #headerTime btn {
+    #headerTime .btn {
         display: flex;
     }
     #calcTime {
