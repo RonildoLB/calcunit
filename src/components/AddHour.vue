@@ -4,7 +4,7 @@
         <div class="col">
             <div id="headerTime">
                 <div style="font-size: 1.5rem;" class="fontSegoe">Cálculo de diferença de horários</div>
-                <div>
+                <div class="row">
                     <button class="btn" style="margin: 0 5px" @click="add()">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
                             <path fill-rule="evenodd" d="M8,6 L8,3 C8,2.44771525 7.55228475,2 7,2 C6.44771525,2 6,2.44771525 6,3 L6,6 L3,6 C2.44771525,6 2,6.44771525 2,7 C2,7.55228475 2.44771525,8 3,8 L6,8 L6,11 C6,11.5522847 6.44771525,12 7,12 C7.55228475,12 8,11.5522847 8,11 L8,8 L11,8 C11.5522847,8 12,7.55228475 12,7 C12,6.44771525 11.5522847,6 11,6 L8,6 Z"/>
@@ -210,6 +210,9 @@ export default {
         justify-content: space-between;
         padding-bottom: 0.75rem;
     }
+    #headerTime btn {
+        display: flex;
+    }
     #calcTime {
         padding: 0 0 1rem 0;
     }
@@ -242,7 +245,6 @@ export default {
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .btn {
-        display: flex;
         min-width: 2.5rem;
         min-height: 2.5rem;
         border: 1px solid #ffffffaa;
