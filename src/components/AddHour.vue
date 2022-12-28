@@ -40,8 +40,8 @@
                 </div>
 
                 <div class="col displayTime">
-                    <span class="lbl_value">{{ meses.toLocaleString("pt-BR", { maximumFractionDigits: 1}) }}</span>
-                    <span class="lbl_periodo">meses</span>
+                    <span class="lbl_value">{{ semanas.toLocaleString("pt-BR", { maximumFractionDigits: 1}) }}</span>
+                    <span class="lbl_periodo">sem</span>
                     <input id="chk_mes" type="checkbox" checked/>
                 </div>
 
@@ -85,7 +85,7 @@ export default {
         caixas: [],
         count: 0,
         anos: "-",
-        meses: "-",
+        semanas: "-",
         dias: "-",
         horas: "-",
         minutos: "-",
@@ -129,7 +129,7 @@ export default {
                 }
             });
 
-            this.anos = 0; this.meses = 0; this.dias = 0;
+            this.anos = 0; this.semanas = 0; this.dias = 0;
             this.horas = 0; this.minutos = 0; this.segundos = 0;
             
             if(document.getElementById('chk_ano').checked == true) {
@@ -137,29 +137,29 @@ export default {
             }
             if(document.getElementById('chk_mes').checked == true) {
                 this.anos = Math.trunc(this.anos);
-                this.total = this.calcMonths();
+                this.total = this.calcWeeks();
             }
             if(document.getElementById('chk_dia').checked == true) {
                 this.anos = Math.trunc(this.anos)
-                this.meses = Math.trunc(this.meses)
+                this.semanas = Math.trunc(this.semanas)
                 this.total = this.calcDays();
             }
             if(document.getElementById('chk_h').checked == true) {
                 this.anos = Math.trunc(this.anos)
-                this.meses = Math.trunc(this.meses)
+                this.semanas = Math.trunc(this.semanas)
                 this.dias = Math.trunc(this.dias)
                 this.total = this.calcHours();
             }
             if(document.getElementById('chk_min').checked == true) {
                 this.anos = Math.trunc(this.anos)
-                this.meses = Math.trunc(this.meses)
+                this.semanas = Math.trunc(this.semanas)
                 this.dias = Math.trunc(this.dias)
                 this.horas = Math.trunc(this.horas)
                 this.total = this.calcMinutes();
             }
             if(document.getElementById('chk_seg').checked == true) {
                 this.anos = Math.trunc(this.anos)
-                this.meses = Math.trunc(this.meses)
+                this.semanas = Math.trunc(this.semanas)
                 this.dias = Math.trunc(this.dias)
                 this.horas = Math.trunc(this.horas)
                 this.minutos = Math.trunc(this.minutos)
@@ -171,9 +171,9 @@ export default {
             this.anos = ((this.total / (60*60)) / 24) / 365.25
             return this.total - ((((Math.trunc(this.anos) * 365) * 24) + Math.trunc(this.anos) * 6) * 60 * 60)
         },
-        calcMonths() {
-            this.meses = ((this.total / (60*60)) / 24) / 30
-            return this.total - (Math.trunc(this.meses) * 30 * 24 * 60 * 60)
+        calcWeeks() {
+            this.semanas = ((this.total / (60*60)) / 24) / 7
+            return this.total - (Math.trunc(this.semanas) * 7 * 24 * 60 * 60)
         },
         calcDays() {
             this.dias = ((this.total / (60*60)) / 24)
