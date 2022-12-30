@@ -1,6 +1,5 @@
 <template>
     <div>
-        {{id}}
         <div class="col">
             <div id="headerTime">
                 <div style="font-size: 1.5rem;" class="fontSegoe">
