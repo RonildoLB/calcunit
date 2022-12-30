@@ -1,9 +1,11 @@
 <template>
-<div style="margin: auto; padding: 1rem">
     <div>
+        {{id}}
         <div class="col">
             <div id="headerTime">
-                <div style="font-size: 1.5rem;" class="fontSegoe">Cálculo de diferença de horários</div>
+                <div style="font-size: 1.5rem;" class="fontSegoe">
+                    Cálculo de diferença de horários
+                </div>
                 <div class="row">
                     <button class="btn" style="margin: 0 5px" @click="add()">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
@@ -20,6 +22,7 @@
             
             <div id="calcTime">
                 <div class="divDiff">
+                    
                     <input id="date_i0" type="datetime-local" step="1" class="form-control"/>
                     &nbsp;-&nbsp;
                     <input id="date_f0" type="datetime-local" step="1" class="form-control"/>
@@ -71,7 +74,6 @@
             </div>  
         </div>
     </div>
-</div>
 </template>
 
 <script>
@@ -186,6 +188,10 @@ export default {
         calcMinutes() {
             this.minutos = this.total / 60
             return this.total - (Math.trunc(this.minutos) * 60)
+        },
+
+        alt() {
+
         }
     },
     mounted () {
@@ -193,7 +199,7 @@ export default {
                           document.getElementById('date_f0')])
     },
     props: {
-
+        id: Number
     }
 }
 </script>
