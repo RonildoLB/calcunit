@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import SelectComponent from './components/SelectComponent.vue'
+import SelectComponent from '../components/SelectComponent.vue'
 
 export default {
   components: { SelectComponent },
