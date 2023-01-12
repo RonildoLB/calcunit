@@ -10,18 +10,11 @@ body{
     background-color: #E9E9E9;
 }
 
-.whiteBox{
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px 1px #00000025;
-    background-color: #f9f9f9;
-    font-family: Lato;
-}
-
-.col{
+.div_col{
     display: flex;
     flex-direction: column;
 }
-.row{
+.div_row{
     display: flex;
     flex-direction: row;
 }
