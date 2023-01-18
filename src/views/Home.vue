@@ -10,24 +10,20 @@
           <button @click="addBox(2)" class="center-h btn-glass">
             <CalendarSVG/>
           </button>
-          
-          <button @click="remove()" class="center-h btn-glass">
-            <FecharSVG/>
-          </button>
         </div>
       </div>
       
       <div style="flex-wrap: wrap" class="div_row center">
         <div v-for="(box, index) of boxes" :key="index" >
-          <div class="component" :class="active">
+          <div v-if="box.id" class="component" :class="active">
             <div class="content" style="justify-content: flex-end">
-              <button @click="remove()" class="center-h btn-glass">
+              <div @click="remove(box.id)" class="center-h btn-card">
                 <FecharSVG/>
-              </button>
+              </div>
             </div>
             <div class="interno">
-              <AddNote v-if="box.type=='1'" :id="index"/>
-              <AddHour v-if="box.type=='2'" :id="index"/>
+              <AddNote v-if="box.type=='1'" :id="box.id"/>
+              <AddHour v-if="box.type=='2'" :id="box.id"/>
             </div>
           </div>
         </div>
@@ -55,16 +51,22 @@ export default {
   },
   data() {
     return {
-      boxes: [{type: 1}, {type: 2}],
-      active: "yellow"
+      boxes: [],
+      active: "yellow",
+      count: 0
     }
   },
   methods: {
     addBox(type) {
-      this.boxes.push({type: type})
+      this.count++
+
+      this.boxes.push({
+        id: this.count,
+        type: type
+      })
     },
-    remove() {
-      this.boxes.pop()
+    remove(id) {
+      this.boxes[this.boxes.findIndex(obj => obj.id == id)] = {}
     },
     changeColor(color) {
       switch (color) {
@@ -135,5 +137,20 @@ export default {
 .content {
   display: flex;
   width: 100%;
+}
+.btn-glass {
+  background-color: transparent;
+  border-color: transparent;
+}
+.btn-card {
+  display: flex;
+  justify-content: center;
+  border-radius: 100px;
+  width: 1rem;
+  height: 1rem;
+  background: radial-gradient(#00000025,#0000, #0000);
+  cursor: pointer;
+} .btn-card>svg {
+  fill: #00000080;
 }
 </style>
