@@ -1,29 +1,44 @@
 <template>
   <div class="content">
     <div style="margin: auto">
-      <div class="content">
-        <div class="div_row" style="margin: auto">
-          <button @click="addBox(1)" class="center-h btn-glass">
-            <NoteSVG/>
-          </button>
+      <div class="content div_col">
+        <div class="div_col" style="margin: auto;">
+          <div class="div_row center">
+            <div class="slctColor yellow" @click="changeColor(1)"></div>
+            <div class="slctColor green" @click="changeColor(2)"></div>
+            <div class="slctColor pink" @click="changeColor(3)"></div>
+            <div class="slctColor purple" @click="changeColor(4)"></div>
+            <div class="slctColor blue" @click="changeColor(5)"></div>
+            <div class="slctColor gray" @click="changeColor(6)"></div>
+          </div>
 
-          <button @click="addBox(2)" class="center-h btn-glass">
-            <CalendarSVG/>
-          </button>
+          <div class="div_row">
+            <div class="back-glass" :class="active">
+              <button @click="addBox(1)" class="center-h btn-glass">
+                <NoteSVG class="icon-btn"/>
+              </button>
+            </div>
+
+            <div class="back-glass" :class="active">
+              <button @click="addBox(2)" class="center-h btn-glass">
+                <CalendarSVG class="icon-btn"/>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      
+
       <div style="flex-wrap: wrap" class="div_row center">
-        <div v-for="(box, index) of boxes" :key="index" >
+        <div v-for="(box, index) of boxes" :key="index">
           <div v-if="box.id" class="component" :class="active">
             <div class="content" style="justify-content: flex-end">
               <div @click="remove(box.id)" class="center-h btn-card">
-                <FecharSVG/>
+                <FecharSVG />
               </div>
             </div>
             <div class="interno">
-              <AddNote v-if="box.type=='1'" :id="box.id"/>
-              <AddHour v-if="box.type=='2'" :id="box.id"/>
+              <AddNote v-if="box.type == '1'" :id="box.id" />
+              <DiffDate v-if="box.type == '2'" :id="box.id" />
             </div>
           </div>
         </div>
@@ -33,36 +48,32 @@
 </template>
 
 <script>
-import AddHour from '../components/AddHour.vue'
+import DiffDate from '../components/DiffDate.vue'
 import AddNote from '../components/AddNote.vue'
-
 import CalendarSVG from '../svg/calendar.vue'
 import NoteSVG from '../svg/notes.vue'
 import FecharSVG from '../svg/fechar.vue'
-
 export default {
-  components: { 
-    AddHour,
+  components: {
+    DiffDate,
     AddNote,
-
     CalendarSVG,
     NoteSVG,
-    FecharSVG
+    FecharSVG,
   },
   data() {
     return {
       boxes: [],
-      active: "yellow",
-      count: 0
+      active: 'yellow',
+      count: 0,
     }
   },
   methods: {
     addBox(type) {
       this.count++
-
       this.boxes.push({
         id: this.count,
-        type: type
+        type: type,
       })
     },
     remove(id) {
@@ -71,28 +82,27 @@ export default {
     changeColor(color) {
       switch (color) {
         case 1:
-          this.active = "yellow";
-          break;
+          this.active = 'yellow'
+          break
         case 2:
-          this.active = "green";
-          break;
+          this.active = 'green'
+          break
         case 3:
-          this.active = "pink";
-          break;
+          this.active = 'pink'
+          break
         case 4:
-          this.active = "purple";
-          break;
+          this.active = 'purple'
+          break
         case 5:
-          this.active = "blue";
-          break;
+          this.active = 'blue'
+          break
         case 6:
-          this.active = "gray";
-          break;
+          this.active = 'gray'
+          break
       }
-    }
+    },
   },
-  mounted() {
-  }
+  mounted() {},
 }
 </script>
 
@@ -130,27 +140,89 @@ export default {
 .gray {
   background-color: #e1dfdd;
 }
+.slctColor {
+  width: 100%;
+  height: 1rem
+}
 .center-h {
   display: flex;
-  align-items: center
+  align-items: center;
 }
 .content {
   display: flex;
   width: 100%;
 }
 .btn-glass {
-  background-color: transparent;
-  border-color: transparent;
+  height: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(
+    180deg,
+    rgba(235, 248, 242, 0.54) 0%,
+    rgba(243, 248, 255, 0.15) 20%,
+    rgba(232, 232, 232, 0.41) 83%,
+    rgba(255, 255, 255, 0.55) 100%
+  );
+  border: 2.5px solid #fafafa60;
+  box-shadow: 0 0 8px rgb(10 10 10 / 20%);
+  cursor: pointer;
+  border-radius: 3px 3px 0.5em 0.5em;
+}
+.btn-glass:hover {
+  height: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(
+    180deg,
+    rgba(235, 248, 242, 0.45) 0%,
+    rgba(243, 248, 255, 0.05) 20%,
+    rgba(232, 232, 232, 0.12) 83%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  border: 2.5px solid #fafafa60;
+  box-shadow: 0 0 6px rgb(10 10 10 / 20%);
+  cursor: pointer;
+  border-radius: 3px 3px 0.5em 0.5em;
+}
+.btn-glass:hover .icon-btn {
+  background: radial-gradient(circle, rgba(247,247,247,0.25) 0%, rgba(255,255,255,0) 100%);
+}
+.btn-glass:active {
+  height: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(
+    180deg,
+    rgba(235, 248, 242, 0.35) 0%,
+    rgba(243, 248, 255, 0.05) 20%,
+    rgba(232, 232, 232, 0.10) 83%,
+    rgba(255, 255, 255, 0.40) 100%
+  );
+  border: 2.5px solid #fcfefc70;
+  box-shadow: 0 0 2px rgb(10 10 10 / 20%);
+  cursor: pointer;
+  border-radius: 3px 3px 0.5em 0.5em;
+  transform: scale(0.98)
+}
+.btn-glass:active .icon-btn {
+  background: transparent;
+}
+
+.back-glass {
+  margin: 1px;
+  border-radius: 0 0 0.5em 0.5em;
+}
+.icon-btn {
+  background: radial-gradient(circle, rgba(247,247,247,0.5) 0%, rgba(255,255,255,0) 100%);
 }
 .btn-card {
   display: flex;
   justify-content: center;
-  border-radius: 100px;
+  border-radius: 100%;
   width: 1rem;
   height: 1rem;
-  background: radial-gradient(#00000025,#0000, #0000);
+  background: radial-gradient(#00000025, #0000, #0000);
   cursor: pointer;
-} .btn-card>svg {
+}
+.btn-card > svg {
   fill: #00000080;
 }
+
 </style>

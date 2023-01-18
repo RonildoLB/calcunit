@@ -88,7 +88,7 @@
 import CalendarSVG from '../svg/calendar.vue'
 
 export default {
-  name: 'AddHour',
+  name: 'DiffDate',
   components: {
     CalendarSVG
   },
