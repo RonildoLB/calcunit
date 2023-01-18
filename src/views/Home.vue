@@ -2,26 +2,28 @@
   <div class="content">
     <div style="margin: auto">
       <div class="content div_col">
-        <div class="div_col" style="margin: auto;">
+        <div class="div_col" style="margin: auto">
           <div class="div_row center">
-            <div class="slctColor yellow" @click="changeColor(1)"></div>
-            <div class="slctColor green" @click="changeColor(2)"></div>
-            <div class="slctColor pink" @click="changeColor(3)"></div>
-            <div class="slctColor purple" @click="changeColor(4)"></div>
-            <div class="slctColor blue" @click="changeColor(5)"></div>
-            <div class="slctColor gray" @click="changeColor(6)"></div>
+            <div class="slctColor border-left border-right yellow" @click="changeColor(1)"></div>
+            <div class="slctColor border-right green" @click="changeColor(2)"></div>
+            <div class="slctColor border-right pink" @click="changeColor(3)"></div>
+            <div class="slctColor border-right purple" @click="changeColor(4)"></div>
+            <div class="slctColor border-right blue" @click="changeColor(5)"></div>
+            <div class="slctColor border-right gray" @click="changeColor(6)"></div>
           </div>
 
+          <div :class="active" class="border-right border-left" style="height: 0.5rem; width: 100%"></div>
+
           <div class="div_row">
-            <div class="back-glass" :class="active">
+            <div class="back-glass border-left" :class="active">
               <button @click="addBox(1)" class="center-h btn-glass">
-                <NoteSVG class="icon-btn"/>
+                <img src="img\bloco-de-notas.png" class="icon-btn" width="40" height="40" />
               </button>
             </div>
 
-            <div class="back-glass" :class="active">
+            <div class="back-glass border-right" :class="active">
               <button @click="addBox(2)" class="center-h btn-glass">
-                <CalendarSVG class="icon-btn"/>
+                <img src="img\data-limite.png" class="icon-btn" width="40" height="40" />
               </button>
             </div>
           </div>
@@ -50,15 +52,12 @@
 <script>
 import DiffDate from '../components/DiffDate.vue'
 import AddNote from '../components/AddNote.vue'
-import CalendarSVG from '../svg/calendar.vue'
-import NoteSVG from '../svg/notes.vue'
 import FecharSVG from '../svg/fechar.vue'
+
 export default {
   components: {
     DiffDate,
     AddNote,
-    CalendarSVG,
-    NoteSVG,
     FecharSVG,
   },
   data() {
@@ -122,6 +121,12 @@ export default {
   padding: 0.75rem;
   border: dashed 1px #aaaa;
 }
+.border-right {
+  border-right: 1px solid #0002;
+}
+.border-left {
+  border-left: 1px solid #0002;
+}
 .yellow {
   background-color: #fff2ab;
 }
@@ -142,7 +147,7 @@ export default {
 }
 .slctColor {
   width: 100%;
-  height: 1rem
+  height: 1.5rem;
 }
 .center-h {
   display: flex;
@@ -153,64 +158,58 @@ export default {
   width: 100%;
 }
 .btn-glass {
+  margin: 0 1px;
   height: 100%;
   padding: 0.75rem;
   background: linear-gradient(
-    180deg,
+    165deg,
+    rgba(250, 250, 250, 0.8) 0%,
+    rgba(247, 247, 247, 0.8) 17%,
+    rgba(222, 222, 222, 0.2) 20%,
+    rgba(200, 200, 200, 0.2) 48%,
+    rgba(223, 223, 223, 0.4) 63%,
+    rgba(210, 210, 210, 0.3) 84%,
+    rgba(215, 215, 215, 0.3) 98%
+  );
+  border: 2px solid #fafafa60;
+  box-shadow: 0 0 7px rgb(10 10 10 / 25%);
+  cursor: pointer;
+  border-radius: 3px 3px 0.5em 0.5em;
+}
+.btn-glass:hover {
+  background: linear-gradient(
+    165deg,
     rgba(235, 248, 242, 0.54) 0%,
     rgba(243, 248, 255, 0.15) 20%,
     rgba(232, 232, 232, 0.41) 83%,
     rgba(255, 255, 255, 0.55) 100%
   );
-  border: 2.5px solid #fafafa60;
-  box-shadow: 0 0 8px rgb(10 10 10 / 20%);
-  cursor: pointer;
-  border-radius: 3px 3px 0.5em 0.5em;
-}
-.btn-glass:hover {
-  height: 100%;
-  padding: 0.75rem;
-  background: linear-gradient(
-    180deg,
-    rgba(235, 248, 242, 0.45) 0%,
-    rgba(243, 248, 255, 0.05) 20%,
-    rgba(232, 232, 232, 0.12) 83%,
-    rgba(255, 255, 255, 0.45) 100%
-  );
-  border: 2.5px solid #fafafa60;
-  box-shadow: 0 0 6px rgb(10 10 10 / 20%);
-  cursor: pointer;
-  border-radius: 3px 3px 0.5em 0.5em;
+  box-shadow: 0 0 7px rgb(10 10 10 / 25%);
 }
 .btn-glass:hover .icon-btn {
-  background: radial-gradient(circle, rgba(247,247,247,0.25) 0%, rgba(255,255,255,0) 100%);
+  background: radial-gradient(circle, rgba(247, 247, 247, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
 }
 .btn-glass:active {
-  height: 100%;
-  padding: 0.75rem;
   background: linear-gradient(
     180deg,
     rgba(235, 248, 242, 0.35) 0%,
     rgba(243, 248, 255, 0.05) 20%,
-    rgba(232, 232, 232, 0.10) 83%,
-    rgba(255, 255, 255, 0.40) 100%
+    rgba(232, 232, 232, 0.1) 83%,
+    rgba(255, 255, 255, 0.4) 100%
   );
-  border: 2.5px solid #fcfefc70;
+  border: 2px solid #fcfefc70;
   box-shadow: 0 0 2px rgb(10 10 10 / 20%);
-  cursor: pointer;
-  border-radius: 3px 3px 0.5em 0.5em;
-  transform: scale(0.98)
+  transform: scale(0.95);
 }
 .btn-glass:active .icon-btn {
   background: transparent;
 }
 
 .back-glass {
-  margin: 1px;
   border-radius: 0 0 0.5em 0.5em;
 }
 .icon-btn {
-  background: radial-gradient(circle, rgba(247,247,247,0.5) 0%, rgba(255,255,255,0) 100%);
+  background: radial-gradient(circle, rgba(247, 247, 247, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
 }
 .btn-card {
   display: flex;
@@ -224,5 +223,4 @@ export default {
 .btn-card > svg {
   fill: #00000080;
 }
-
 </style>

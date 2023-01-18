@@ -4,17 +4,17 @@
      Copiado!
     </div>
     <div class="header">
-        <div style="font-size: 1.5rem; display: flex;" class="font-segoe">
-          <NoteSVG style="margin-right: 0.75rem;"/>
+        <div style="font-size: 1.5rem; display: flex; align-items: center" class="font-segoe">
+          <img src="img\bloco-de-notas.png" style="margin-right: 0.75rem;" width="40" height="40" />
           <div class="div_col">
-            <span style="font-size: 16pt; font-weight: 500; margin-top: -4pt">Notas</span>
+            <span style="font-size: 16pt; font-weight: 500;">Notas</span>
             <span style="font-size: 10pt;">Notes</span>
           </div>
          
         </div>
         <div>
           <button :disabled="textarea == ''" title="Copiar" @click="copy(this.id)" class="btn" style="min-width: unset !important; min-height: unset !important;">
-            <svg xmlns="http://www.w3.org/2000/svg" style="padding: 6px !important" width="24pt" height="24pt" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            <CopySVG/>
           </button>
         </div>
     </div>
@@ -23,12 +23,12 @@
 </template>
 
 <script>
-import NoteSVG from '../svg/notes.vue'
+import CopySVG from '../svg/copy.vue'
 
 export default {
   name: 'AddHour',
   components: {
-    NoteSVG
+    CopySVG
   },
   data() {
     return {

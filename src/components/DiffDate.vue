@@ -2,29 +2,19 @@
   <div>
     <div class="div_col">
       <div :id="this.id+'header'" class="headerTime">
-        <div style="font-size: 1.5rem; display: flex;" class="font-segoe">
-          <CalendarSVG style="padding: 0; margin-right: 0.75rem;"/>
+        <div style="font-size: 1.5rem; display: flex; align-items: center" class="font-segoe">
+          <img src="img\data-limite.png" style="margin-right: 0.75rem;" width="40" height="40" />
           <div class="div_col">
-            <span style="font-size: 16pt; font-weight: 500; margin-top: -4pt">Diferença de data e hora</span>
+            <span style="font-size: 16pt; font-weight: 500;">Diferença de data e hora</span>
             <span style="font-size: 10pt;">Date and time difference</span>
           </div>
         </div>
         <div class="div_row">
           <button class="btn" style="margin: 0 5px" @click="add(this.id)">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-              <path
-                fill-rule="evenodd"
-                d="M8,6 L8,3 C8,2.44771525 7.55228475,2 7,2 C6.44771525,2 6,2.44771525 6,3 L6,6 L3,6 C2.44771525,6 2,6.44771525 2,7 C2,7.55228475 2.44771525,8 3,8 L6,8 L6,11 C6,11.5522847 6.44771525,12 7,12 C7.55228475,12 8,11.5522847 8,11 L8,8 L11,8 C11.5522847,8 12,7.55228475 12,7 C12,6.44771525 11.5522847,6 11,6 L8,6 Z"
-              />
-            </svg>
+            <PlusSVG/>
           </button>
           <button class="btn" @click="remove(this.id)">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-              <path
-                fill-rule="evenodd"
-                d="M12,7 C12,7.55228475 11.5522847,8 11,8 L3,8 C2.44771525,8 2,7.55228475 2,7 C2,6.44771525 2.44771525,6 3,6 L11,6 C11.5522847,6 12,6.44771525 12,7 Z"
-              />
-            </svg>
+            <MinusSVG/>
           </button>
         </div>
       </div>
@@ -85,12 +75,14 @@
 </template>
 
 <script>
-import CalendarSVG from '../svg/calendar.vue'
+import PlusSVG from '../svg/plus.vue'
+import MinusSVG from '../svg/minus.vue'
 
 export default {
   name: 'DiffDate',
   components: {
-    CalendarSVG
+    PlusSVG,
+    MinusSVG
   },
   data() {
     return {
@@ -148,14 +140,12 @@ export default {
       this.horas = "-"
       this.minutos = "-"
       this.segundos = "-"
-
       const chk_ano = document.getElementById(id+'chk_ano')
       const chk_sem = document.getElementById(id+'chk_sem')
       const chk_dia = document.getElementById(id+'chk_dia')
       const chk_h = document.getElementById(id+'chk_h')
       const chk_min = document.getElementById(id+'chk_min')
       const chk_seg = document.getElementById(id+'chk_seg')
-
       if (chk_ano.checked == true) {
         this.total = this.calcYears()
       }
@@ -221,7 +211,6 @@ export default {
 }
 </script>
 <style>
-
 .headerTime {
   display: flex;
   flex-direction: row;
@@ -257,7 +246,6 @@ export default {
   align-items: center;
   padding: 0 10px;
 }
-
 .plus {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: bold;
