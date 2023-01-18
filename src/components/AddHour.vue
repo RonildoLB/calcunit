@@ -186,7 +186,7 @@ export default {
         if(chk_sem.checked == true) { this.semanas = Math.trunc(this.semanas) }
         if(chk_dia.checked == true) { this.dias = Math.trunc(this.dias) }
         if(chk_h.checked == true) { this.horas = Math.trunc(this.horas) }
-        if(chk_seg.checked == true) { this.minutos = Math.trunc(this.minutos) }
+        if(chk_min.checked == true) { this.minutos = Math.trunc(this.minutos) }
         this.segundos = this.total
       }
     },
