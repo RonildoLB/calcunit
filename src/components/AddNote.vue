@@ -6,7 +6,11 @@
     <div class="header">
         <div style="font-size: 1.5rem; display: flex;" class="font-segoe">
           <NoteSVG style="margin-right: 0.75rem;"/>
-          <span style="font-weight: 500">Notas</span>
+          <div class="div_col">
+            <span style="font-size: 16pt; font-weight: 500; margin-top: -4pt">Notas</span>
+            <span style="font-size: 10pt;">Notes</span>
+          </div>
+         
         </div>
         <div>
           <button :disabled="textarea == ''" title="Copiar" @click="copy(this.id)" class="btn" style="min-width: unset !important; min-height: unset !important;">
