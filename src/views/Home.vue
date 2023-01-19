@@ -4,7 +4,7 @@
       <div class="content div_col" style="background-color: #c9c8c8; padding-bottom: 0.5rem;">
         <div class="div_col" style="margin: auto">
           <div class="div_row center">
-            <div class="slctColor border-left border-right yellow" @click="changeColor(1)"></div>
+            <div class="slctColor border-left yellow" @click="changeColor(1)"></div>
             <div class="slctColor border-left green" @click="changeColor(2)"></div>
             <div class="slctColor border-left pink" @click="changeColor(3)"></div>
             <div class="slctColor border-left purple" @click="changeColor(4)"></div>
