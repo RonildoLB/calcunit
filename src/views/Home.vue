@@ -195,16 +195,7 @@ export default {
   margin: 0 1px;
   height: 100%;
   padding: 0.75rem;
-  background: linear-gradient(
-    165deg,
-    rgba(250, 250, 250, 0.8) 0%,
-    rgba(247, 247, 247, 0.8) 17%,
-    rgba(222, 222, 222, 0.2) 20%,
-    rgba(200, 200, 200, 0.2) 48%,
-    rgba(223, 223, 223, 0.4) 63%,
-    rgba(210, 210, 210, 0.3) 84%,
-    rgba(215, 215, 215, 0.3) 98%
-  );
+  background: transparent;
   border: 2px solid #fafafa60;
   box-shadow: 0 0 7px rgb(10 10 10 / 25%);
   cursor: pointer;
