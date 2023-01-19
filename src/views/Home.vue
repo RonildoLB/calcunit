@@ -4,11 +4,11 @@
       <div class="content div_col" style="background-color: #c9c8c8; padding-bottom: 0.5rem;">
         <div class="div_col" style="margin: auto">
           <div class="div_row center">
-            <div class="slctColor border-left border-right border-right yellow" @click="changeColor(1)"></div>
-            <div class="slctColor border-left border-right green" @click="changeColor(2)"></div>
-            <div class="slctColor border-left border-right pink" @click="changeColor(3)"></div>
-            <div class="slctColor border-left border-right purple" @click="changeColor(4)"></div>
-            <div class="slctColor border-left border-right blue" @click="changeColor(5)"></div>
+            <div class="slctColor border-left border-right yellow" @click="changeColor(1)"></div>
+            <div class="slctColor border-left green" @click="changeColor(2)"></div>
+            <div class="slctColor border-left pink" @click="changeColor(3)"></div>
+            <div class="slctColor border-left purple" @click="changeColor(4)"></div>
+            <div class="slctColor border-left blue" @click="changeColor(5)"></div>
             <div class="slctColor border-left border-right gray" @click="changeColor(6)"></div>
           </div>
 
