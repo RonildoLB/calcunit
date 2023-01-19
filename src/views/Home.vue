@@ -1,7 +1,7 @@
 <template>
   <div class="content">
-    <div style="margin: auto; width: 100%">
-      <div class="content div_col" style="background-color: #c9c8c8; padding-bottom: 0.5rem;">
+    <div style="margin: auto>
+      <div class="content div_col">
         <div class="div_col" style="margin: auto">
           <div class="div_row center">
             <div class="slctColor border-left yellow" @click="changeColor(1)"></div>
