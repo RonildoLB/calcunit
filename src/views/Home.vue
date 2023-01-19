@@ -195,7 +195,7 @@ export default {
   margin: 0 1px;
   height: 100%;
   padding: 0.75rem;
-  background: transparent;
+  background: #ffffff70;
   border: 2px solid #fafafa60;
   box-shadow: 0 0 7px rgb(10 10 10 / 25%);
   cursor: pointer;
