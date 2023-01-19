@@ -15,7 +15,7 @@
           <div :class="active" class="border-right border-left" style="height: 0.5rem; width: 100%"></div>
 
           <div class="div_row">
-            <div class="back-glass border-left" :class="active">
+            <div class="back-glass border-left border-right" :class="active">
               <button @click="addBox(1)" class="center-h btn-glass">
                 <img src="img\bloco-de-notas.png" class="icon-btn" width="40" height="40" />
               </button>
