@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div style="margin: auto>
+    <div style="margin: auto">
       <div class="content div_col">
         <div class="div_col" style="margin: auto">
           <div class="div_row center">
