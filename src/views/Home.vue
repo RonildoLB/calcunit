@@ -1,15 +1,15 @@
 <template>
   <div class="content">
-    <div style="margin: auto">
-      <div class="content div_col">
+    <div style="margin: auto; width: 100%">
+      <div class="content div_col" style="background-color: #c9c8c8; padding-bottom: 0.5rem;">
         <div class="div_col" style="margin: auto">
           <div class="div_row center">
-            <div class="slctColor border-left border-right yellow" @click="changeColor(1)"></div>
-            <div class="slctColor border-right green" @click="changeColor(2)"></div>
-            <div class="slctColor border-right pink" @click="changeColor(3)"></div>
-            <div class="slctColor border-right purple" @click="changeColor(4)"></div>
-            <div class="slctColor border-right blue" @click="changeColor(5)"></div>
-            <div class="slctColor border-right gray" @click="changeColor(6)"></div>
+            <div class="slctColor border-left border-right border-right yellow" @click="changeColor(1)"></div>
+            <div class="slctColor border-left border-right green" @click="changeColor(2)"></div>
+            <div class="slctColor border-left border-right pink" @click="changeColor(3)"></div>
+            <div class="slctColor border-left border-right purple" @click="changeColor(4)"></div>
+            <div class="slctColor border-left border-right blue" @click="changeColor(5)"></div>
+            <div class="slctColor border-left border-right gray" @click="changeColor(6)"></div>
           </div>
 
           <div :class="active" class="border-right border-left" style="height: 0.5rem; width: 100%"></div>
@@ -147,7 +147,7 @@ export default {
     rgba(255, 255, 255, 0.35) 79%
   );
   padding: 0 1rem 1rem 1rem;
-  margin: 1rem;
+  margin: 0.75rem;
   box-shadow: 0px 4px 4px 1px #00000025;
 }
 .interno {
@@ -199,7 +199,7 @@ export default {
   border: 2px solid #fafafa60;
   box-shadow: 0 0 7px rgb(10 10 10 / 25%);
   cursor: pointer;
-  border-radius: 3px 3px 0.5em 0.5em;
+  border-radius: 0.5em;
 }
 .btn-glass:hover {
   background: linear-gradient(
