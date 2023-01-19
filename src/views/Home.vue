@@ -26,6 +26,30 @@
                 <img src="img\data-limite.png" class="icon-btn" width="40" height="40" />
               </button>
             </div>
+
+            <div class="back-glass border-right" :class="active">
+              <button @click="addBox(3)" class="center-h btn-glass" disabled>
+                <img src="img\calculadora.png" class="icon-btn" width="40" height="40" />
+              </button>
+            </div>
+
+            <div class="back-glass border-right" :class="active">
+              <button @click="addBox(4)" class="center-h btn-glass">
+                <img src="img\velocimetro.png" class="icon-btn" width="40" height="40" />
+              </button>
+            </div>
+
+            <div class="back-glass border-right" :class="active">
+              <button @click="addBox(5)" class="center-h btn-glass">
+                <img src="img\angulo.png" class="icon-btn" width="40" height="40" />
+              </button>
+            </div>
+
+            <div class="back-glass border-right" :class="active">
+              <button @click="addBox(6)" class="center-h btn-glass">
+                <img src="img\temperatura.png" class="icon-btn" width="40" height="40" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -41,6 +65,9 @@
             <div class="interno">
               <AddNote v-if="box.type == '1'" :id="box.id" />
               <DiffDate v-if="box.type == '2'" :id="box.id" />
+              <ConvSpeed v-if="box.type == '4'" :id="box.id" />
+              <ConvAngle v-if="box.type == '5'" :id="box.id" />
+              <ConvTemp v-if="box.type == '6'" :id="box.id" />
             </div>
           </div>
         </div>
@@ -52,12 +79,18 @@
 <script>
 import DiffDate from '../components/DiffDate.vue'
 import AddNote from '../components/AddNote.vue'
+import ConvSpeed from '../components/ConvSpeed.vue'
+import ConvAngle from '../components/ConvAngle.vue'
+import ConvTemp from '../components/ConvTemp.vue'
 import FecharSVG from '../svg/fechar.vue'
 
 export default {
   components: {
     DiffDate,
     AddNote,
+    ConvSpeed,
+    ConvAngle,
+    ConvTemp,
     FecharSVG,
   },
   data() {
@@ -148,6 +181,7 @@ export default {
 .slctColor {
   width: 100%;
   height: 1.5rem;
+  cursor: pointer;
 }
 .center-h {
   display: flex;
