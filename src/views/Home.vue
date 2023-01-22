@@ -4,12 +4,12 @@
       <div class="content div_col">
         <div class="div_col" style="margin: auto">
           <div class="div_row center">
-            <div class="slctColor border-left yellow" @click="changeColor(1)"></div>
-            <div class="slctColor border-left green" @click="changeColor(2)"></div>
-            <div class="slctColor border-left pink" @click="changeColor(3)"></div>
-            <div class="slctColor border-left purple" @click="changeColor(4)"></div>
-            <div class="slctColor border-left blue" @click="changeColor(5)"></div>
-            <div class="slctColor border-left border-right gray" @click="changeColor(6)"></div>
+            <div class="slctColor border-left yellow" @click="changeColorActive(1)"></div>
+            <div class="slctColor border-left green" @click="changeColorActive(2)"></div>
+            <div class="slctColor border-left pink" @click="changeColorActive(3)"></div>
+            <div class="slctColor border-left purple" @click="changeColorActive(4)"></div>
+            <div class="slctColor border-left blue" @click="changeColorActive(5)"></div>
+            <div class="slctColor border-left border-right gray" @click="changeColorActive(6)"></div>
           </div>
 
           <div :class="active" class="border-right border-left" style="height: 0.5rem; width: 100%"></div>
@@ -56,9 +56,12 @@
 
       <div style="flex-wrap: wrap" class="div_row center">
         <div v-for="(box, index) of boxes" :key="index">
-          <div v-if="box.id" class="component" :class="active">
+          <div v-if="box.id" class="component" :class="box.color">
             <div class="content" style="justify-content: flex-end">
-              <div @click="remove(box.id)" class="center-h btn-card">
+              <div @click="changeColor(box)" class="center-h btn-card">
+                <PaletaSVG />
+              </div>
+              <div @click="remove(box.id)" class="center-h btn-card card-close" style="margin-left: 0.2rem">
                 <FecharSVG />
               </div>
             </div>
@@ -83,6 +86,7 @@ import ConvSpeed from '../components/ConvSpeed.vue'
 import ConvAngle from '../components/ConvAngle.vue'
 import ConvTemp from '../components/ConvTemp.vue'
 import FecharSVG from '../svg/fechar.vue'
+import PaletaSVG from '../svg/paleta.vue'
 
 export default {
   components: {
@@ -92,6 +96,7 @@ export default {
     ConvAngle,
     ConvTemp,
     FecharSVG,
+    PaletaSVG,
   },
   data() {
     return {
@@ -106,12 +111,13 @@ export default {
       this.boxes.push({
         id: this.count,
         type: type,
+        color: this.active
       })
     },
     remove(id) {
       this.boxes[this.boxes.findIndex(obj => obj.id == id)] = {}
     },
-    changeColor(color) {
+    changeColorActive(color) {
       switch (color) {
         case 1:
           this.active = 'yellow'
@@ -130,6 +136,28 @@ export default {
           break
         case 6:
           this.active = 'gray'
+          break
+      }
+    },
+    changeColor(box) {
+      switch (box.color) {
+        case 'yellow':
+          box.color = 'green'
+          break
+        case 'green':
+          box.color = 'pink'
+          break
+        case 'pink':
+          box.color = 'purple'
+          break
+        case 'purple':
+          box.color = 'blue'
+          break
+        case 'blue':
+          box.color = 'gray'
+          break
+        case 'gray':
+          box.color = 'yellow'
           break
       }
     },
@@ -247,5 +275,8 @@ export default {
 }
 .btn-card > svg {
   fill: #00000080;
+}
+.card-close {
+  background: radial-gradient(#ff000025, #ff000000, #0000);
 }
 </style>

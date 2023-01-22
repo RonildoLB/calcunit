@@ -8,6 +8,8 @@
 
 body{
     background-color: #E9E9E9;
+    background-image: url('../../public/img/background.jpg');
+    background-repeat: repeat;
 }
 
 .div_col{
@@ -50,6 +52,7 @@ body{
     cursor: default;
     background: rgb(19, 121, 184);
     color:#d7e6f3;
+    box-shadow: unset;
 }
 .btn svg {
     padding: 10px;
