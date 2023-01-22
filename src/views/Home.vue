@@ -4,12 +4,12 @@
       <div class="content div_col">
         <div class="div_col" style="margin: auto">
           <div class="div_row center">
-            <div class="slctColor border-left yellow" @click="changeColorActive(1)"></div>
-            <div class="slctColor border-left green" @click="changeColorActive(2)"></div>
-            <div class="slctColor border-left pink" @click="changeColorActive(3)"></div>
-            <div class="slctColor border-left purple" @click="changeColorActive(4)"></div>
-            <div class="slctColor border-left blue" @click="changeColorActive(5)"></div>
-            <div class="slctColor border-left border-right gray" @click="changeColorActive(6)"></div>
+            <div class="slctColor border-left yellow" @click="changeColorActive('yellow')"></div>
+            <div class="slctColor border-left green" @click="changeColorActive('green')"></div>
+            <div class="slctColor border-left pink" @click="changeColorActive('pink')"></div>
+            <div class="slctColor border-left purple" @click="changeColorActive('purple')"></div>
+            <div class="slctColor border-left blue" @click="changeColorActive('blue')"></div>
+            <div class="slctColor border-left border-right gray" @click="changeColorActive('gray')"></div>
           </div>
 
           <div :class="active" class="border-right border-left" style="height: 0.5rem; width: 100%"></div>
@@ -118,26 +118,7 @@ export default {
       this.boxes[this.boxes.findIndex(obj => obj.id == id)] = {}
     },
     changeColorActive(color) {
-      switch (color) {
-        case 1:
-          this.active = 'yellow'
-          break
-        case 2:
-          this.active = 'green'
-          break
-        case 3:
-          this.active = 'pink'
-          break
-        case 4:
-          this.active = 'purple'
-          break
-        case 5:
-          this.active = 'blue'
-          break
-        case 6:
-          this.active = 'gray'
-          break
-      }
+      this.active = color
     },
     changeColor(box) {
       switch (box.color) {

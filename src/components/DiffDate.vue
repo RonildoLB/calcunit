@@ -19,11 +19,13 @@
         </div>
       </div>
 
-      <div :id="this.id+'calcTime'" style="padding-bottom: 1rem;">
-        <div class="divDiff">
-          <input :id="this.id+'date_i0'" type="datetime-local" step="1" class="form-control" />
-          &nbsp;-&nbsp;
-          <input :id="this.id+'date_f0'" type="datetime-local" step="1" class="form-control" />
+      <div :id="this.id+'calcTime'" class="div_col" style="padding-bottom: 1rem;">
+        <div class="div_row center">
+          <div class="divDiff">
+            <input :id="this.id+'date_i0'" type="datetime-local" step="1" class="form-control" />
+            <div>&nbsp;-&nbsp;</div>
+            <input :id="this.id+'date_f0'" type="datetime-local" step="1" class="form-control" />
+          </div>
         </div>
       </div>
     </div>
@@ -105,11 +107,11 @@ export default {
         'beforeend',
         '<div id="'+this.id+'box' +
           this.count +
-          '"><center><div class="plus">+</div></center><div class="divDiff"><input id="'+this.id+'date_i' +
+          '"><div class="div_row center"><div class="div_col"><center><div class="plus">+</div></center><div class="divDiff"><input id="'+this.id+'date_i' +
           this.count +
           '" type="datetime-local" step="1" class="form-control"/>&nbsp;-&nbsp;<input id="'+this.id+'date_f' +
           this.count +
-          '" type="datetime-local" step="1" class="form-control"/></div></div>'
+          '" type="datetime-local" step="1" class="form-control"/></div></div></div></div>'
       )
       this.caixas.push([document.getElementById(this.id+'date_i'+this.count), document.getElementById(this.id+'date_f'+this.count)])
     },
@@ -260,5 +262,12 @@ export default {
   border-radius: 0.5rem;
   border: 1px solid #ced4da;
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 585px) {
+    .divDiff {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
 }
 </style>

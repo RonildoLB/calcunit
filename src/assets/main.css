@@ -12,6 +12,12 @@ body{
     background-repeat: repeat;
 }
 
+@media screen and (max-width: 450px) {
+    body {
+        zoom: 85%;
+    }
+}
+
 .div_col{
     display: flex;
     flex-direction: column;
