@@ -1,7 +1,8 @@
 <template>
   <div class="content">
-    <div style="margin: auto">
-      <div class="content div_col">
+    <div style="margin: auto;">
+      <div id="menu" class="content div_row">
+
         <div class="div_col" style="margin: auto">
           <div class="div_row center">
             <div class="slctColor border-left yellow" @click="changeColorActive('yellow')"></div>
@@ -54,7 +55,7 @@
         </div>
       </div>
 
-      <div style="flex-wrap: wrap" class="div_row center">
+      <div style="min-width: 100vw; flex-wrap: wrap; position: relative" class="div_row center">
         <div v-for="(box, index) of boxes" :key="index">
           <div v-if="box.id" class="component" :class="box.color">
             <div class="content" style="justify-content: flex-end">
@@ -148,6 +149,12 @@ export default {
 </script>
 
 <style>
+#menu {
+  background: #88888888;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ababab83;
+  box-shadow: 0 0 7px rgb(10 10 10 / 25%);
+}
 .component {
   background-image: linear-gradient(
     178deg,
