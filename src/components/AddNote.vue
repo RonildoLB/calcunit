@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       timer: 0,
-      textarea: ""
+      textarea: "",
     }
   },
   methods: {
@@ -43,9 +43,14 @@ export default {
       document.execCommand('copy');
       document.getSelection().collapseToEnd();
       let lbl_copy = document.getElementById(id+'lbl_copy')
+      lbl_copy.classList.remove('lbl_copy_transparent');
+      lbl_copy.classList.add('lbl_copy');
       lbl_copy.hidden = false
       clearTimeout(this.timer)
-      this.timer = setTimeout(() => lbl_copy.hidden = true, 1500);
+      this.timer = setTimeout(() => {
+        lbl_copy.classList.toggle('lbl_copy_transparent');
+        this.timer = setTimeout(() => {lbl_copy.hidden = true;}, 500);
+      }, 1000);
     }
   },
   mounted() {
@@ -64,14 +69,20 @@ textarea {
   box-shadow: inset 0 0 5px 1px #0001;
 }
 .lbl_copy {
-    padding: 0.4rem 1rem 0.5rem 1rem;
-    border-radius: 50px;
-    color: aliceblue;
-    font-weight: bold;
-    background-color: #303030;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  padding: 0.4rem 1rem 0.5rem 1rem;
+  border-radius: 50px;
+  color: aliceblue;
+  font-weight: bold;
+  background-color: #303030;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+  opacity: 1;
+  box-shadow: 3 5 10px rgb(10 10 10 / 25%);
+}
+.lbl_copy_transparent {
+  opacity: 0;
 }
 </style>
