@@ -67,7 +67,7 @@ textarea {
   min-width: 10rem;
   min-height: 2.5em;
   box-shadow: inset 0 0 5px 1px #0001;
-  font-size: 14pt !important;
+  font-size: 13pt !important;
 }
 .lbl_copy {
   padding: 0.4rem 1rem 0.5rem 1rem;
