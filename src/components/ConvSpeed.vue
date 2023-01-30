@@ -2,7 +2,7 @@
   <div class="div_col">
     <div class="header">
       <div style="font-size: 1.5rem; display: flex; align-items: center" class="font-segoe">
-        <img src="img\velocimetro.png" style="margin-right: 0.75rem;" width="40" height="40" />
+        <img src="img\velocimetro.png" style="margin-right: 0.75rem;" width="40" height="40" draggable="false"/>
 
         <div class="div_col">
           <span style="font-size: 16pt; font-weight: 500;">Conversor de Velocidade</span>
@@ -93,21 +93,6 @@ export default {
 }
 </script>
 <style>
-  input[type=number] {
-    background-color: #fff5 !important; 
-    color: #000 !important;
-    box-shadow: inset 0 0 5px 1px #0001;
-    text-align: center;
-    font-weight: 500;
-    font-size: 20pt;
-    width: 15rem;
-    min-width: 100%
-  }
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
   #lbl_greatness {
     padding-top: 1rem;
     padding-bottom: 0.25rem;

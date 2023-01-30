@@ -1,55 +1,59 @@
 <template>
   <div class="content">
     <div style="margin: auto;">
-      <div id="menu" class="content div_row">
-
+      <div id="menu" class="content div_col">
         <div class="div_col" style="margin: auto">
-          <div class="div_row center">
-            <div class="slctColor border-left yellow" @click="changeColorActive('yellow')"></div>
-            <div class="slctColor border-left green" @click="changeColorActive('green')"></div>
-            <div class="slctColor border-left pink" @click="changeColorActive('pink')"></div>
-            <div class="slctColor border-left purple" @click="changeColorActive('purple')"></div>
-            <div class="slctColor border-left blue" @click="changeColorActive('blue')"></div>
-            <div class="slctColor border-left border-right gray" @click="changeColorActive('gray')"></div>
+          
+          <div class="div_row center" style="width: 400px">
+            <div class="slctColor border-color yellow" :class="{ transform: active == 'yellow' }" @click="changeColorActive('yellow')"></div>
+            <div class="slctColor border-color green" :class="{ transform: active == 'green' }" @click="changeColorActive('green')"></div>
+            <div class="slctColor border-color pink" :class="{ transform: active == 'pink' }" @click="changeColorActive('pink')"></div>
+            <div class="slctColor border-color purple" :class="{ transform: active == 'purple' }" @click="changeColorActive('purple')"></div>
+            <div class="slctColor border-color blue" :class="{ transform: active == 'blue' }" @click="changeColorActive('blue')"></div>
+            <div class="slctColor border-color gray" :class="{ transform: active == 'gray' }" @click="changeColorActive('gray')"></div>
           </div>
+        </div>
 
-          <div :class="active" class="border-right border-left" style="height: 0.5rem; width: 100%"></div>
+        <hr style="margin: 10px; border-color: #fff; opacity: 0.6">
 
-          <div class="div_row">
-            <div class="back-glass border-left border-right" :class="active">
-              <button @click="addBox(1)" class="center-h btn-glass">
-                <img src="img\bloco-de-notas.png" class="icon-btn" width="40" height="40" />
-              </button>
-            </div>
+        <div class="div_row">
+          <div class="div_col" style="margin: auto">
+            <div class="div_row">
+              <div class="back-glass border" :class="active">
+                <button @click="addBox(1)" class="center-h btn-glass">
+                  <img src="img\bloco-de-notas.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                </button>
+              </div>
 
-            <div class="back-glass border-right" :class="active">
-              <button @click="addBox(2)" class="center-h btn-glass">
-                <img src="img\data-limite.png" class="icon-btn" width="40" height="40" />
-              </button>
-            </div>
+              <div class="back-glass border" :class="active">
+                <button @click="addBox(2)" class="center-h btn-glass">
+                  <img src="img\data-limite.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                </button>
+              </div>
 
-            <div class="back-glass border-right" :class="active">
-              <button @click="addBox(3)" class="center-h btn-glass" disabled>
-                <img src="img\calculadora.png" class="icon-btn" width="40" height="40" />
-              </button>
-            </div>
+              <div class="back-glass border" :class="active">
+                <button @click="addBox(3)" class="center-h btn-glass">
+                  <img src="img\calculadora.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                </button>
+              </div>
 
-            <div class="back-glass border-right" :class="active">
-              <button @click="addBox(4)" class="center-h btn-glass">
-                <img src="img\velocimetro.png" class="icon-btn" width="40" height="40" />
-              </button>
-            </div>
+              <div class="back-glass border" :class="active">
+                <button @click="addBox(4)" class="center-h btn-glass">
+                  <img src="img\velocimetro.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                </button>
+              </div>
 
-            <div class="back-glass border-right" :class="active">
-              <button @click="addBox(5)" class="center-h btn-glass">
-                <img src="img\angulo.png" class="icon-btn" width="40" height="40" />
-              </button>
-            </div>
+              <div class="back-glass border" :class="active">
+                <button @click="addBox(5)" class="center-h btn-glass">
+                  <img src="img\angulo.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                </button>
+              </div>
 
-            <div class="back-glass border-right" :class="active">
-              <button @click="addBox(6)" class="center-h btn-glass">
-                <img src="img\temperatura.png" class="icon-btn" width="40" height="40" />
-              </button>
+              <div class="back-glass border" :class="active">
+                <button @click="addBox(6)" class="center-h btn-glass">
+                  <img src="img\temperatura.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -69,6 +73,7 @@
             <div class="interno">
               <AddNote v-if="box.type == '1'" :id="box.id" />
               <DiffDate v-if="box.type == '2'" :id="box.id" />
+              <Calculator v-if="box.type == '3'" :id="box.id" />
               <ConvSpeed v-if="box.type == '4'" :id="box.id" />
               <ConvAngle v-if="box.type == '5'" :id="box.id" />
               <ConvTemp v-if="box.type == '6'" :id="box.id" />
@@ -83,6 +88,7 @@
 <script>
 import DiffDate from '../components/DiffDate.vue'
 import AddNote from '../components/AddNote.vue'
+import Calculator from '../components/Calculator.vue'
 import ConvSpeed from '../components/ConvSpeed.vue'
 import ConvAngle from '../components/ConvAngle.vue'
 import ConvTemp from '../components/ConvTemp.vue'
@@ -93,6 +99,7 @@ export default {
   components: {
     DiffDate,
     AddNote,
+    Calculator,
     ConvSpeed,
     ConvAngle,
     ConvTemp,
@@ -150,10 +157,18 @@ export default {
 
 <style>
 #menu {
-  background: #88888888;
+  background-image: linear-gradient(
+    90deg,
+    #F2F2F2 0%,
+    #F8F8F8 60%,
+    #F4F4F4 100%
+  );
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #ababab83;
-  box-shadow: 0 0 7px rgb(10 10 10 / 25%);
+  border-bottom: 7px solid #D3D3D3;
+  box-shadow: 0 0px 4px 4px rgb(10 10 10 / 25%);
+}
+.transform {
+  transform: scale(1.1);
 }
 .component {
   background-image: linear-gradient(
@@ -170,11 +185,14 @@ export default {
   padding: 0.75rem;
   border: dashed 1px #aaaa;
 }
-.border-right {
-  border-right: 1px solid #0002;
+.border {
+  border: 1px solid #0002;
 }
-.border-left {
-  border-left: 1px solid #0002;
+.border-color {
+  border: 2px solid #0002;
+  border-radius: 0 0 1rem 1rem;
+  border-top: 0px;
+  box-shadow: 0px 2px 2px -1px #0003;
 }
 .yellow {
   background-color: #fff2ab;
@@ -213,7 +231,7 @@ export default {
   padding: 0.75rem;
   background: #ffffff70;
   border: 2px solid #fafafa60;
-  box-shadow: 0 0 7px rgb(10 10 10 / 25%);
+  box-shadow: 0 0 5px rgb(10 10 10 / 25%);
   cursor: pointer;
   border-radius: 0.5em;
 }
@@ -225,7 +243,7 @@ export default {
     rgba(232, 232, 232, 0.41) 83%,
     rgba(255, 255, 255, 0.55) 100%
   );
-  box-shadow: 0 0 7px rgb(10 10 10 / 25%);
+  box-shadow: 0 0 4px rgb(10 10 10 / 25%);
 }
 .btn-glass:hover .icon-btn {
   background: radial-gradient(circle, rgba(247, 247, 247, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
@@ -238,7 +256,7 @@ export default {
     rgba(232, 232, 232, 0.1) 83%,
     rgba(255, 255, 255, 0.4) 100%
   );
-  border: 2px solid #fcfefc70;
+  border: 2px solid #fcfefcfa;
   box-shadow: 0 0 2px rgb(10 10 10 / 20%);
   transform: scale(0.95);
 }
@@ -247,7 +265,7 @@ export default {
 }
 
 .back-glass {
-  border-radius: 0 0 0.5em 0.5em;
+  border-radius: 0.5em;
 }
 .icon-btn {
   background: radial-gradient(circle, rgba(247, 247, 247, 0.5) 0%, rgba(255, 255, 255, 0) 100%);

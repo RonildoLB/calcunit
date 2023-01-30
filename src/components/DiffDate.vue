@@ -3,17 +3,17 @@
     <div class="div_col">
       <div :id="this.id+'header'" class="headerTime">
         <div style="font-size: 1.5rem; display: flex; align-items: center" class="font-segoe">
-          <img src="img\data-limite.png" style="margin-right: 0.75rem;" width="40" height="40" />
+          <img src="img\data-limite.png" style="margin-right: 0.75rem;" width="40" height="40" draggable="false" />
           <div class="div_col">
             <span style="font-size: 16pt; font-weight: 500;">Diferença de data e hora</span>
             <span style="font-size: 10pt;">Date and time difference</span>
           </div>
         </div>
         <div class="div_row">
-          <button class="btn" style="margin: 0 5px" @click="add(this.id)">
+          <button class="btn btn-blue" style="margin-right: 5px" @click="add(this.id)">
             <PlusSVG/>
           </button>
-          <button class="btn" @click="remove(this.id)">
+          <button class="btn btn-blue" @click="remove(this.id)">
             <MinusSVG/>
           </button>
         </div>
@@ -33,7 +33,7 @@
     <div class="div_row">
       <div class="div_col">
         <span id="lbl_total" class="font-segoe">Total:</span>
-        <button id="btn_total" class="btn" @click="calc(this.id)">Calcule</button>
+        <button id="btn_total" class="btn btn-blue" @click="calc(this.id)">Calcule</button>
       </div>
       <div class="div_row" style="width: 100%; justify-content: center">
         <div class="div_col displayTime">

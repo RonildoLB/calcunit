@@ -5,7 +5,7 @@
     </div>
     <div class="header">
         <div style="font-size: 1.5rem; display: flex; align-items: center" class="font-segoe">
-          <img src="img\bloco-de-notas.png" style="margin-right: 0.75rem;" width="40" height="40" />
+          <img src="img\bloco-de-notas.png" style="margin-right: 0.75rem;" width="40" height="40" draggable="false"/>
           <div class="div_col">
             <span style="font-size: 16pt; font-weight: 500;">Notas</span>
             <span style="font-size: 10pt;">Notes</span>
@@ -13,12 +13,12 @@
          
         </div>
         <div>
-          <button :disabled="textarea == ''" title="Copiar" @click="copy(this.id)" class="btn" style="min-width: unset !important; min-height: unset !important;">
+          <button :disabled="textarea == ''" title="Copiar" @click="copy(this.id)" class="btn btn-blue" style="min-width: unset !important; min-height: unset !important;">
             <CopySVG/>
           </button>
         </div>
     </div>
-    <textarea v-model="textarea" :id="this.id+'textarea'" class="form-control" rows="10" cols="25"></textarea>
+    <textarea v-model="textarea" :id="this.id+'textarea'" class="form-control" rows="10" cols="30"></textarea>
   </div>
 </template>
 
