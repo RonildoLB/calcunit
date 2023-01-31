@@ -22,7 +22,7 @@
                 C
             </button>
             <button class="btn btn-blue" @click="brackets()">
-                ( )
+                (<sub v-if="countBrackets != 0" style="font-size: 8pt">{{countBrackets}}</sub> )
             </button>
             <button class="btn btn-blue" @click="operation('^')">
                 x<sup><sup> y</sup></sup>
@@ -124,6 +124,7 @@ export default {
         number: "",
         total: "",
         selected: false,
+        countBrackets: 0,
         calcParc: 0,
         calcTotal: 0,
         caixa: []
@@ -131,10 +132,6 @@ export default {
   },
   methods: {
     addNum(num) {
-        if(this.selected == true) {
-            this.number = ""
-            this.selected = false
-        }
 
         let texto = document.getElementById(this.id+'ipt_calc')
         
@@ -161,25 +158,59 @@ export default {
         this.includesNumber(op)
     },
     brackets() {
+        if(isNaN(this.caixa[this.caixa.length-1]) && this.caixa[this.caixa.length-1] != ")" && this.number === "") {
+            this.total = this.total + '('
+            this.caixa.push('(')
+            this.countBrackets++
+        }
+        else {
+            if(this.countBrackets > 0) {
+                let numero = this.number.toString().replace(".", ",")
+                this.caixa.push(parseFloat(numero))
+                this.caixa.push(')')
 
+                if(this.number < 0){
+                    this.total = this.total + '(' + numero + ')' + ')'
+                }
+                else {
+                    this.total = this.total + numero + ')'
+                }
+                
+                this.countBrackets--
+
+                let texto = document.getElementById(this.id+'ipt_calc')
+                texto.placeholder = this.calcParcial()
+                this.number = ""
+                texto.focus()
+            }
+        }
+        console.log("bracket" + this.countBrackets)
     },
     includesNumber(signal) {
         if(this.number != "") {
-            let numero = this.number.toString().replace(".", ",")
-            this.caixa.push(parseFloat(numero))
-            this.caixa.push(signal)
+            if(this.caixa[this.caixa.length-1] != ")") {
+                let numero = this.number.toString().replace(".", ",")
+                this.caixa.push(parseFloat(numero))
+                this.caixa.push(signal)
 
-            if(this.number < 0){
-                this.total = this.total + '(' + numero + ')' + signal
-            }
-            else {
-                this.total = this.total + this.number.toString().replace(".", ",") + signal
+                if(this.number < 0){
+                    this.total = this.total + '(' + numero + ')' + signal
+                }
+                else {
+                    this.total = this.total + numero + signal
+                }
             }
         } else {
             if(this.total != "") {
-                this.total = this.total.toString().slice(0, -1) + signal
-                this.caixa.pop()
-                this.caixa.push(signal)
+                if(this.caixa[this.caixa.length-1] != "("  && this.caixa[this.caixa.length-1] != ")") {
+                    this.total = this.total.toString().slice(0, -1) + signal
+                    this.caixa.pop()
+                    this.caixa.push(signal)
+                }
+                if(this.caixa[this.caixa.length-1] == ")") {
+                    this.total = this.total + signal
+                    this.caixa.push(signal)
+                }
             }
         }
 
@@ -189,14 +220,15 @@ export default {
         texto.placeholder = this.calcParcial()
         this.number = ""
         texto.focus()
-        this.selected = true
     },
     clear() {
         let texto = document.getElementById(this.id+'ipt_calc')
         texto.value = ""
+        texto.placeholder = ""
         this.number = ""
         this.total = ""
         this.caixa = []
+        this.countBrackets = 0
         texto.focus()
     },
     negative() {
@@ -219,8 +251,14 @@ export default {
         texto.scrollLeft = texto.scrollWidth;
     },
     calcParcial() {
-                    
-        return this.number.toString()
+        let num = ""
+        for(let i = this.caixa.length-1; i >= 0; i--) {
+            if(!isNaN(this.caixa[i])) {
+                num = this.caixa[i]
+                break
+            }
+        }
+        return num.toString()
     },
     result() {
 
