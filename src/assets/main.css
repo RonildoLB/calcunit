@@ -11,6 +11,7 @@ body{
     background-image: url('../../public/img/background2.jpg');
     background-repeat: repeat;
     overflow-x: hidden;
+    overflow: overlay;
 }
 
 body::-webkit-scrollbar {
@@ -22,9 +23,16 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-background-color: rgb(54, 54, 54);
-border-radius: 20px;
-border: 2px solid #B9B9B9;
+    background-color: rgba(54, 54, 54, 0.75);
+    border-radius: 20px;
+    border: solid 2px transparent;
+    background-clip: content-box;
+}
+body::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(54, 54, 54);
+    border-radius: 20px;
+    border: solid 2px transparent;
+    background-clip: content-box;
 }
 
 @media screen and (max-width: 450px) {

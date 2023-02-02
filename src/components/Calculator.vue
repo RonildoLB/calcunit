@@ -1,18 +1,17 @@
 <template>
   <div class="div_col">
 
-    <div class="div_col">
-        <label class="lbl_calc font-segoe"> {{total}} </label>
+    <div class="div_col">    
+        <label :id="this.id+'lbl_calc'" class="lbl_calc font-segoe"> {{total}} </label>
 
         <input 
             :id="this.id+'ipt_calc'" 
             type="number" 
             step="any" 
             class="inpt_calc form-control" 
-            v-model="number" 
+            v-model="number"
             dir="ltr" 
-            onfocus="this.scrollLeft = this.scrollWidth;" 
-            onfocusout="this.scrollLeft = this.scrollWidth;"
+            onfocus="this.scrollLeft = this.scrollWidth;"
         />
     </div>
 
@@ -132,11 +131,12 @@ export default {
   },
   methods: {
     addNum(num) {
+        this.resultClear()
 
         let texto = document.getElementById(this.id+'ipt_calc')
         
         if(num === ',' || num === '.') {
-            if(!this.number.includes(',') && !this.number.includes('.')) {
+            if(!this.number.toString().includes(',') && !this.number.toString().includes('.')) {
                 texto.type = "text"
                 texto.value += num.toString()
                 this.number += num.toString()
@@ -158,6 +158,9 @@ export default {
         this.includesNumber(op)
     },
     brackets() {
+        this.resultClear()
+        let texto = document.getElementById(this.id+'ipt_calc')
+
         if(isNaN(this.caixa[this.caixa.length-1]) && this.caixa[this.caixa.length-1] != ")" && this.number === "") {
             this.total = this.total + '('
             this.caixa.push('(')
@@ -165,32 +168,50 @@ export default {
         }
         else {
             if(this.countBrackets > 0) {
-                let numero = this.number.toString().replace(".", ",")
-                this.caixa.push(parseFloat(numero))
-                this.caixa.push(')')
+                if(this.caixa[this.caixa.length-1] != ")") {
+                    let numero = this.number.toString().replace(".", ",")
+                    this.caixa.push(parseFloat(this.number))
+                    this.caixa.push(')')
 
-                if(this.number < 0){
-                    this.total = this.total + '(' + numero + ')' + ')'
-                }
-                else {
-                    this.total = this.total + numero + ')'
-                }
-                
-                this.countBrackets--
+                    if(this.number < 0){
+                        this.total = this.total + '(' + numero + ')' + ')'
+                    }
+                    else {
+                        this.total = this.total + numero + ')'
+                    }
 
-                let texto = document.getElementById(this.id+'ipt_calc')
-                texto.placeholder = this.calcParcial()
-                this.number = ""
-                texto.focus()
+                    this.countBrackets--
+
+                    let texto = document.getElementById(this.id+'ipt_calc')
+                    texto.placeholder = this.calcParcial()
+                    this.number = ""
+                    texto.focus()
+                } else {
+                    this.caixa.push(')')
+                    this.total = this.total + ')'
+
+                    this.countBrackets--
+
+                    texto.placeholder = this.calcParcial()
+                    this.number = ""
+                }
             }
         }
-        console.log("bracket" + this.countBrackets)
+
+        texto.focus()
+
+        let label = document.getElementById(this.id+'lbl_calc')
+        let wait = setTimeout(() => {
+            label.scrollLeft = label.scrollWidth;
+        }, 0);
     },
     includesNumber(signal) {
+        this.resultClear()
+
         if(this.number != "") {
             if(this.caixa[this.caixa.length-1] != ")") {
                 let numero = this.number.toString().replace(".", ",")
-                this.caixa.push(parseFloat(numero))
+                this.caixa.push(parseFloat(this.number))
                 this.caixa.push(signal)
 
                 if(this.number < 0){
@@ -199,6 +220,9 @@ export default {
                 else {
                     this.total = this.total + numero + signal
                 }
+            } else {
+                this.caixa.push(signal)
+                this.total = this.total + signal
             }
         } else {
             if(this.total != "") {
@@ -214,12 +238,15 @@ export default {
             }
         }
 
-        console.log(this.caixa)
-
         let texto = document.getElementById(this.id+'ipt_calc')
         texto.placeholder = this.calcParcial()
         this.number = ""
         texto.focus()
+
+        let label = document.getElementById(this.id+'lbl_calc')
+        let wait = setTimeout(() => {
+            label.scrollLeft = label.scrollWidth;
+        }, 0);
     },
     clear() {
         let texto = document.getElementById(this.id+'ipt_calc')
@@ -232,6 +259,8 @@ export default {
         texto.focus()
     },
     negative() {
+        this.resultClear()
+
         let texto = document.getElementById(this.id+'ipt_calc')
         if(this.number.toString().indexOf("-") != -1) {
             texto.value = texto.value.replace("-", "")
@@ -261,7 +290,127 @@ export default {
         return num.toString()
     },
     result() {
+        if(this.countBrackets == 0) {
+            if(this.total[this.total.length-1] == ')' && this.number !== "") {
+                this.number = eval(this.total)
+            } else {
+                if(this.number !== "") {
+                    this.caixa.push(parseFloat(this.number))
+                    let numero = this.number.toString().replace(".", ",")
 
+                    if(this.number < 0){
+                        this.total = this.total + '(' + numero + ')'
+                    }
+                    else {
+                        this.total = this.total + numero
+                    }
+                }
+                let total = this.calcResult()
+                this.number = eval(total)
+                this.selected = true
+            }
+        }
+
+        let label = document.getElementById(this.id+'lbl_calc')
+        let wait = setTimeout(() => {
+            label.scrollLeft = label.scrollWidth;
+        }, 0);
+    },
+    resultClear() {
+        if(this.selected == true) {
+            let texto = document.getElementById(this.id+'ipt_calc')
+            this.total = ""
+            this.caixa = []
+            this.countBrackets = 0
+            texto.focus()
+            this.selected = false
+        }
+    },
+    calcResult() {
+        let total = ""
+        let caixa2 = this.caixa.slice()
+
+        total = this.calcString(caixa2)
+        console.log(total)
+        return total
+    },
+    calcString(caixa) {
+        let nbrackets = 0
+        let hbrackets = []
+        let str = ""
+
+        for(let n = 0; n <= (caixa.length-1); n++) {
+            if(caixa[n] == "(") {
+                nbrackets ++
+                hbrackets.push([nbrackets, n])
+            }
+
+            if(caixa[n] == ")") {
+                hbrackets.push([nbrackets, n])
+                nbrackets --   
+            }
+
+            if(caixa[n] == "^") {
+                if(caixa[n-1] == ")") {
+                    let cbrackets = 0
+                    for (let c = (n-1); c >= 0; c--) {
+                        if(caixa[c] == ")") {
+                            cbrackets++
+                        }
+
+                        if(caixa[c] == "(") {
+                            cbrackets--
+                            if(cbrackets == 0) {
+                                if(caixa[n+1] == "(") {
+
+                                    let dbrackets = 0
+                                    for (let d = (n+1); d <= (caixa.length-1); d++) {
+                                        if(caixa[d] == "(") {
+                                            dbrackets++
+                                        }
+
+                                        if(caixa[d] == ")") {
+                                            dbrackets--
+                                            if(dbrackets == 0) {
+                                                caixa.splice(c, d+1, "Math.pow("+ this.calcString(caixa.slice(c+1, n-1))+ ","+ this.calcString(caixa.slice(n+2, d))+ ")")
+                                                n = 0
+                                            }
+                                        }
+                                    }
+
+                                }
+                                else {
+                                    caixa.splice(c, n+2, "Math.pow("+ this.calcString(caixa.slice(c+1, n-1))+ ","+ caixa[n+1]+ ")")
+                                    n = 0
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    if(caixa[n+1] == "(") {
+                        let cbrackets = 0
+                        for (let c = (n+1); c <= (caixa.length-1); c++) {
+                            if(caixa[c] == "(") {
+                                cbrackets++
+                            }
+
+                            if(caixa[c] == ")") {
+                                cbrackets--
+                                if(cbrackets == 0) {
+                                    caixa.splice(n-1, c+1, "Math.pow("+ caixa[n-1]+ ","+ this.calcString(caixa.slice(n+2, c))+ ")")
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        caixa.splice(n-1, 3, "Math.pow("+ caixa[n-1]+ ","+ caixa[n+1]+ ")")
+                    }
+                }
+            }
+        }
+        str = caixa.join("")
+        return str
     }
   },
   mounted() {
@@ -274,8 +423,11 @@ export default {
 
 <style>
 .lbl_calc {
+    overflow-x: scroll;
+    white-space: nowrap;
+    scroll-behavior: smooth;
     color: #000a !important;
-    text-align: center;
+    text-align: right;
     font-weight: 500;
     font-size: 16pt;
     width: 0rem;
@@ -283,8 +435,21 @@ export default {
     text-align: right !important;
     transition: 0ms !important;
 }
+.lbl_calc::-webkit-scrollbar {
+    height: 5px;
+}
+.lbl_calc::-webkit-scrollbar-track {
+    opacity: 0;
+}
+.lbl_calc::-webkit-scrollbar-thumb {
+    background-color: rgba(54, 54, 54, 0.7);
+    border-radius: 20px;
+    background-clip: content-box;
+    border: solid 0.05rem transparent;
+}
+
 .inpt_calc {
-    margin: 0.5rem 0;
+    margin: 0 0 0.5rem 0;
     background-color: #fff5 !important; 
     color: #000 !important;
     box-shadow: inset 0 0 5px 1px #0001;
