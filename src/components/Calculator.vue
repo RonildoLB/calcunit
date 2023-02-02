@@ -399,12 +399,14 @@ export default {
                                 cbrackets--
                                 if(cbrackets == 0) {
                                     caixa.splice(n-1, c+1, "Math.pow("+ caixa[n-1]+ ","+ this.calcString(caixa.slice(n+2, c))+ ")")
+                                    n = 0
                                 }
                             }
                         }
                     }
                     else {
                         caixa.splice(n-1, 3, "Math.pow("+ caixa[n-1]+ ","+ caixa[n+1]+ ")")
+                        n = 0
                     }
                 }
             }
