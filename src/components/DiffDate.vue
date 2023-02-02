@@ -33,7 +33,7 @@
     <div class="div_row">
       <div class="div_col">
         <span id="lbl_total" class="font-segoe">Total:</span>
-        <button id="btn_total" class="btn btn-blue" @click="calc(this.id)">Calcule</button>
+        <button id="btn_total" class="btn btn-blue" @click="calc(this.id)"><EqualsSVG/></button>
       </div>
       <div class="div_row" style="width: 100%; justify-content: center">
         <div class="div_col displayTime">
@@ -79,12 +79,14 @@
 <script>
 import PlusSVG from '../svg/plus.vue'
 import MinusSVG from '../svg/minus.vue'
+import EqualsSVG from '../svg/equals.vue'
 
 export default {
   name: 'DiffDate',
   components: {
     PlusSVG,
-    MinusSVG
+    MinusSVG,
+    EqualsSVG
   },
   data() {
     return {
@@ -107,7 +109,7 @@ export default {
         'beforeend',
         '<div id="'+this.id+'box' +
           this.count +
-          '"><div class="div_row center"><div class="div_col"><center><div class="plus">+</div></center><div class="divDiff"><input id="'+this.id+'date_i' +
+          '"><div class="div_row center"><div class="div_col" style="width: 100%;"><center><div class="plus">+</div></center><div class="divDiff"><input id="'+this.id+'date_i' +
           this.count +
           '" type="datetime-local" step="1" class="form-control"/>&nbsp;-&nbsp;<input id="'+this.id+'date_f' +
           this.count +
@@ -224,7 +226,7 @@ export default {
   display: flex;
 }
 #btn_total {
-  padding: 0rem 0.75rem;
+  display: flex;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -253,6 +255,7 @@ export default {
   font-weight: bold;
 }
 .divDiff {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -262,6 +265,9 @@ export default {
   border-radius: 0.5rem;
   border: 1px solid #ced4da;
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.25);
+}
+.form-control {
+  width: 100%;
 }
 
 @media screen and (max-width: 585px) {
