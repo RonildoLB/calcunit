@@ -1,0 +1,173 @@
+.menu {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    background-image: linear-gradient(
+      90deg,
+      #F2F2F2 0%,
+      #F8F8F8 60%,
+      #F4F4F4 100%
+    );
+    padding-bottom: 0.75rem;
+    border-bottom: 7px solid #D3D3D3;
+    box-shadow: 0 2px 5px 1px rgb(10 10 10 / 50%);
+    border-radius: 0px 0px 30px 30px;
+}
+  
+.back-glass {
+    border-radius: 0.75em;
+}
+  
+.blue {
+    background-color: #cde9ff;
+}
+  
+.border {
+    border: 1px solid #0002;
+}
+  
+.border-color {
+    margin: 0 1px;
+    background-image: radial-gradient(#fff0 0%,
+    #0000 50%,
+    #fff2 100%);
+    border: 2px solid #0002;
+    border-radius: 0.1rem 0.1rem 1rem 1rem;
+    border-top: 1px solid #0002;
+    box-shadow: 0px 2px 2px -1px #0003;
+}
+  
+.btn-glass {
+    margin: 0 1px;
+    height: 100%;
+    padding: 0.75rem;
+    background: #ffffff70;
+    border: 2px solid #fafafa60;
+    box-shadow: 0 2px 4px rgb(10 10 10 / 25%);
+    cursor: pointer;
+    border-radius: 0.75em;
+}
+.btn-glass:hover {
+    background: linear-gradient(
+      165deg,
+      rgba(235, 248, 242, 0.54) 0%,
+      rgba(243, 248, 255, 0.15) 20%,
+      rgba(232, 232, 232, 0.41) 83%,
+      rgba(255, 255, 255, 0.55) 100%
+    );
+    box-shadow: 0 0 4px rgb(10 10 10 / 25%);
+}
+.btn-glass:hover .icon-btn {
+    background: radial-gradient(circle, rgba(247, 247, 247, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.btn-glass:active {
+    background: linear-gradient(
+      180deg,
+      rgba(235, 248, 242, 0.35) 0%,
+      rgba(243, 248, 255, 0.05) 20%,
+      rgba(232, 232, 232, 0.1) 83%,
+      rgba(255, 255, 255, 0.4) 100%
+    );
+    border: 2px solid #fcfefcfa;
+    box-shadow: 0 0 2px rgb(10 10 10 / 20%);
+    transform: scale(0.95);
+}
+.btn-glass:active .icon-btn {
+    background: transparent;
+}
+  
+.btn-card {
+    display: flex;
+    justify-content: center;
+    border-radius: 100%;
+    width: 1rem;
+    height: 1rem;
+    background: radial-gradient(#00000025, #0000, #0000);
+    cursor: pointer;
+}
+.btn-card > svg {
+    fill: #00000080;
+}
+  
+.card-close {
+    background: radial-gradient(#ff000025, #ff000000, #0000);
+}
+  
+.center-h {
+    display: flex;
+    align-items: center;
+}
+  
+.component {
+    background-image: linear-gradient(
+      178deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.25) 73%,
+      rgba(255, 255, 255, 0.35) 79%
+    );
+    padding: 0 1rem 1rem 1rem;
+    margin: 0.75rem;
+    box-shadow: 0 4px 4px 1px #00000050;
+}
+  
+.content {
+    display: flex;
+    width: 100%;
+}
+  
+.gray {
+    background-color: #e1dfdd;
+}
+  
+.green {
+    background-color: #cbf1c4;
+}
+  
+.icon-btn {
+    background: radial-gradient(circle, rgba(247, 247, 247, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+}
+  
+.interno {
+    padding: 0.75rem;
+    border: dashed 1px #aaaa;
+}
+
+.pink {
+    background-color: #ffcce5;
+}
+  
+.purple {
+    background-color: #e7cfff;
+}
+  
+.slctColor {
+    width: 100%;
+    height: 1.5rem;
+    cursor: pointer;
+}
+.slctColor.blue {
+    background: linear-gradient(#aadaff 0%, #cde9ff 50%);
+}
+.slctColor.gray {
+    background: linear-gradient(#c2c2c2 0%, #e1dfdd 50%);
+}
+.slctColor.green {
+    background: linear-gradient(#b5ffa8 0%, #cbf1c4 50%);
+}
+.slctColor.pink {
+    background: linear-gradient(#ffadd5 0%, #ffcce5 50%);
+}
+.slctColor.purple {
+    background: linear-gradient(#d7aeff 0%, #e7cfff 50%);
+}
+.slctColor.yellow {
+    background: linear-gradient(#ffea76 0%, #fff2ab 50%);
+}
+  
+.transform {
+    border-bottom: none;
+    box-shadow: 0px -5px 2px 0px #0003;
+}
+  
+.yellow {
+    background-color: #fff2ab;
+}

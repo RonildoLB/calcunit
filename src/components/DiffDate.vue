@@ -35,7 +35,7 @@
         <span id="lbl_total" class="font-segoe">Total:</span>
         <button id="btn_total" class="btn btn-blue" @click="calc(this.id)"><EqualsSVG/></button>
       </div>
-      <div class="div_row" style="width: 100%; justify-content: center">
+      <div class="div_row" style="width: 100%; justify-content: center; flex-wrap: wrap">
         <div class="div_col displayTime">
           <span class="lbl_value">{{ anos.toLocaleString('pt-BR', { maximumFractionDigits: 1 }) }}</span>
           <span class="lbl_periodo">anos</span>
