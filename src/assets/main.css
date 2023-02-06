@@ -10,6 +10,7 @@
 body{
     background-color: #B9B9B9;
     background-image: url('../../public/img/background6.png');
+    background-size: 100px;
     background-repeat:repeat;
     overflow-x: hidden;
     overflow: overlay;
