@@ -2,11 +2,21 @@
   <div>
     <div class="div_col">
       <div :id="this.id+'header'" class="headerTime">
-        <div style="font-size: 1.5rem; display: flex; align-items: center" class="font-segoe">
-          <img src="img\data-limite.png" style="margin-right: 0.75rem;" width="40" height="40" draggable="false" />
-          <div class="div_col">
-            <span style="font-size: 16pt; font-weight: 500;">Diferença de data e hora</span>
-            <span style="font-size: 10pt;">Date and time difference</span>
+        <div style="font-size: 1.5rem; align-items: center" class="select font-segoe">
+          <div style="display: flex; align-items: center">
+            <img src="img\data-limite.png" style="margin-right: 0.75rem;" width="40" height="40" draggable="false" />
+            <div class="div_col">
+              <span style="font-size: 16pt; font-weight: 500;">Diferença de data e hora</span>
+              <span style="font-size: 10pt;">Date and time difference</span>
+            </div>
+          </div>
+
+          <div class="select-content">
+            <img src="img\calc-data.png" style="margin-right: 0.75rem;" width="40" height="40" draggable="false" />
+            <div class="div_col">
+              <span style="font-size: 16pt; font-weight: 500;">Cálculo de data e hora</span>
+              <span style="font-size: 10pt;">Date and time difference</span>
+            </div>
           </div>
         </div>
         <div class="div_row">
@@ -215,6 +225,24 @@ export default {
 }
 </script>
 <style>
+.select {
+  cursor: pointer;
+  position: relative;
+  display: inline-block !important;
+}
+
+.select:hover .select-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.select-content {
+  position: absolute;
+  font-size: 1.5rem;
+  display: none;
+  align-items: center;
+}
+
 .headerTime {
   display: flex;
   flex-direction: row;
