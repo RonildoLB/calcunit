@@ -1,12 +1,12 @@
 <template>
   <div class="content">
     <div style="margin: auto;">
-      <div class="menu-base div_row">
+      <div class="menu-base div_row" style="position: relative; z-index: 2147483647;">
         <div id="menu-logo" class="menu-comp center">
           <CalcUnit id="logo"/>
         </div>
 
-        <div class="menu-comp" style="position: relative; z-index: 2147483647;">
+        <div class="menu-comp">
         <div id="menu" class="menu div_col">
           <div class="div_col" style="margin: auto">
             <div class="div_row center" style="width: 400px;">
