@@ -1,12 +1,12 @@
 <template>
   <div class="content">
     <div style="margin: auto;">
-      <div class="div_row" style="margin-bottom: 1.5rem; justify-content: space-between; box-shadow:  0 0 10px rgb(100 100 100 / 100%);">
-        <div class="comp-menu center">
+      <div class="menu-base div_row">
+        <div id="menu-logo" class="menu-comp center">
           <CalcUnit id="logo"/>
         </div>
 
-        <div class="comp-menu" style="position: relative; z-index: 2147483647;">
+        <div class="menu-comp">
         <div id="menu" class="menu div_col">
           <div class="div_col" style="margin: auto">
             <div class="div_row center" style="width: 400px;">
@@ -65,7 +65,7 @@
         </div>
         </div>
 
-        <div class="div_col comp-menu center">
+        <div id="menu-imagens" class="div_col menu-comp center">
           <div class="div_row center" style="flex-wrap: wrap">
           <img class="menu-img" src="img\background1.png" width="50" height="50" @click="changeImage(1)">
           <img class="menu-img" src="img\background2.png" width="50" height="50" @click="changeImage(2)">
