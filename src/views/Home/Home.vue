@@ -6,7 +6,7 @@
           <CalcUnit id="logo"/>
         </div>
 
-        <div class="menu-comp">
+        <div class="menu-comp" style="position: relative; z-index: 2147483647;">
         <div id="menu" class="menu div_col">
           <div class="div_col" style="margin: auto">
             <div class="div_row center" style="width: 400px;">
@@ -115,7 +115,6 @@ import ConvTemp from '../../components/ConvTemp.vue'
 import FecharSVG from '../../svg/fechar.vue'
 import PaletaSVG from '../../svg/paleta.vue'
 import CalcUnit from '../../svg/calcunit.vue'
-
 export default {
   components: {
     DiffDate,
