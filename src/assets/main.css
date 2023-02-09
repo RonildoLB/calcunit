@@ -7,6 +7,11 @@
     box-sizing: border-box;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body{
     background-color: #B9B9B9;
     background-image: url('../../public/img/background6.png');
@@ -14,6 +19,8 @@ body{
     background-repeat:repeat;
     overflow-x: hidden;
     overflow: overlay;
+    width: 100%;
+    height: 100%;
 }
 
 body::-webkit-scrollbar {

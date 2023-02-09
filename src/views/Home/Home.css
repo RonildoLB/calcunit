@@ -72,6 +72,15 @@
 .btn-card > svg {
     fill: #00000080;
 }
+
+#btn-hamburger {
+    display: none;
+    margin-left:1rem;
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 0 6px;
+    cursor: pointer;
+}
   
 .card-close {
     background: radial-gradient(#ff000025, #ff000000, #0000);
@@ -93,6 +102,15 @@
     display: flex;
     width: 100%;
 }
+
+#full {
+    display:none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #0008;
+    z-index: 1000000;
+}
   
 .gray {
     background-color: #e1dfdd;
@@ -105,10 +123,34 @@
 .icon-btn {
     background: radial-gradient(circle, rgba(247, 247, 247, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
 }
+
+.inpt-color {
+    padding: 0 0.1rem;
+    margin: 0.1rem;
+    width: 50px;
+    height: 50px;
+    background-image: linear-gradient(
+      90deg,
+      #F2F2F2 0%,
+      #F8F8F8 60%,
+      #F4F4F4 100%
+    );
+    border: none;
+    border-bottom: 2px solid #D3D3D3;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px 1px rgb(10 10 10 / 20%);
+    cursor: pointer;
+}
   
 .interno {
     padding: 0.75rem;
     border: dashed 1px #aaaa;
+}
+
+#main {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .menu {
@@ -127,6 +169,8 @@
 }
 
 .menu-img {
+    width: 50px;
+    height: 50px;
     padding: 0.25rem;
     margin: 0.1rem;
     background-image: linear-gradient(
@@ -155,7 +199,7 @@
     box-shadow:  0 0 10px rgb(100 100 100 / 100%);
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1200px) {
     .menu-base {
         flex-wrap: wrap;
     }
@@ -175,24 +219,16 @@
     #menu-center {
         width: 100%;
     }
-}
-
-.inpt-color {
-    padding: 0 0.1rem;
-    margin: 0.1rem;
-    width: 50px;
-    height: 50px;
-    background-image: linear-gradient(
-      90deg,
-      #F2F2F2 0%,
-      #F8F8F8 60%,
-      #F4F4F4 100%
-    );
-    border: none;
-    border-bottom: 2px solid #D3D3D3;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px 1px rgb(10 10 10 / 20%);
-    cursor: pointer;
+    #logo {
+        fill: black !important;
+    }
+    #btn-hamburger {
+        display: flex;
+        border: 2px solid #000 !important;
+    }
+    #btn-hamburger > svg {
+        fill: #000 !important;
+    }
 }
 
 .menu-comp {
