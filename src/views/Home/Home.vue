@@ -10,7 +10,7 @@
           <img class="menu-img" src="img\background6.png" @click="changeImage(6)">
           <img class="menu-img" src="img\background9.png" @click="changeImage(9)">
           <div style="position: relative">
-            <BucketSVG id="bucketcolor" style="position: absolute; pointer-events: none; opacity: 0.75; padding:0.75rem"/>
+            <BucketSVG class="bucketcolor" :style="'fill:'+bucketColor"/>
             <input type="color" class="inpt-color" @input="inptColor()" v-model="colorBG"/>
           </div>
         </div>
@@ -100,7 +100,7 @@
             <img class="menu-img" src="img\background6.png" @click="changeImage(6)">
             <img class="menu-img" src="img\background9.png" @click="changeImage(9)">
             <div style="position: relative">
-              <BucketSVG id="bucketcolor" style="position: absolute; pointer-events: none; opacity: 0.75; padding:0.75rem"/>
+              <BucketSVG class="bucketcolor" :style="'fill:'+bucketColor"/>
               <input type="color" class="inpt-color" @input="inptColor()" v-model="colorBG"/>
             </div>
             </div>
@@ -168,7 +168,8 @@ export default {
       boxes: [],
       active: 'yellow',
       count: 0,
-      colorBG: '#ffffff'
+      colorBG: '#ffffff',
+      bucketColor: "#000"
     }
   },
   methods: {
@@ -187,7 +188,8 @@ export default {
       } else {
         this.isDark()
       }
-      document.getElementById('bucketcolor').style.fill = '#'+this.hexComplimentary(this.colorBG.replace('#',''));
+      this.bucketColor = '#'+this.hexComplimentary(this.colorBG.replace('#',''));
+
     },
     hexLuminosity(H) {
       // Convert hex to RGB first
