@@ -2,70 +2,70 @@
   <div class="content">
     <div style="margin: auto;">
       <div class="menu-base div_row" style="position: relative; z-index: 2147483647;">
-        <div id="menu-logo" class="menu-comp center">
+        <div id="menu-logo" class="menu-comp center" style="width: 100%;">
           <CalcUnit id="logo"/>
         </div>
 
-        <div class="menu-comp">
-        <div id="menu" class="menu div_col">
-          <div class="div_col" style="margin: auto">
-            <div class="div_row center" style="width: 400px;">
-              <div class="slctColor border-color yellow" :class="{ transform: active == 'yellow' }" @click="changeColorActive('yellow')"></div>
-              <div class="slctColor border-color green" :class="{ transform: active == 'green' }" @click="changeColorActive('green')"></div>
-              <div class="slctColor border-color pink" :class="{ transform: active == 'pink' }" @click="changeColorActive('pink')"></div>
-              <div class="slctColor border-color purple" :class="{ transform: active == 'purple' }" @click="changeColorActive('purple')"></div>
-              <div class="slctColor border-color blue" :class="{ transform: active == 'blue' }" @click="changeColorActive('blue')"></div>
-              <div class="slctColor border-color gray" :class="{ transform: active == 'gray' }" @click="changeColorActive('gray')"></div>
-            </div>
-          </div>
-
-          <hr style="margin: 10px 0; border-color: #fff; opacity: 1">
-
-          <div class="div_row">
+        <div id="menu-center" class="menu-comp">
+          <div id="menu" class="menu div_col">
             <div class="div_col" style="margin: auto">
-              <div class="div_row">
-                <div class="back-glass border" :class="active">
-                  <button @click="addBox(1)" class="center-v btn-glass">
-                    <img src="img\bloco-de-notas.png" class="icon-btn" width="40" height="40" draggable="false"/>
-                  </button>
-                </div>
+              <div class="div_row center" style="width: 400px;">
+                <div class="slctColor border-color yellow" :class="{ transform: active == 'yellow' }" @click="changeColorActive('yellow')"></div>
+                <div class="slctColor border-color green" :class="{ transform: active == 'green' }" @click="changeColorActive('green')"></div>
+                <div class="slctColor border-color pink" :class="{ transform: active == 'pink' }" @click="changeColorActive('pink')"></div>
+                <div class="slctColor border-color purple" :class="{ transform: active == 'purple' }" @click="changeColorActive('purple')"></div>
+                <div class="slctColor border-color blue" :class="{ transform: active == 'blue' }" @click="changeColorActive('blue')"></div>
+                <div class="slctColor border-color gray" :class="{ transform: active == 'gray' }" @click="changeColorActive('gray')"></div>
+              </div>
+            </div>
 
-                <div class="back-glass border" :class="active">
-                  <button @click="addBox(2)" class="center-v btn-glass">
-                    <img src="img\data-limite.png" class="icon-btn" width="40" height="40" draggable="false"/>
-                  </button>
-                </div>
+            <hr style="margin: 10px 0; border-color: #fff; opacity: 1">
 
-                <div class="back-glass border" :class="active">
-                  <button @click="addBox(3)" class="center-v btn-glass">
-                    <img src="img\calculadora.png" class="icon-btn" width="40" height="40" draggable="false"/>
-                  </button>
-                </div>
+            <div class="div_row">
+              <div class="div_col" style="margin: auto">
+                <div class="div_row">
+                  <div class="back-glass border" :class="active">
+                    <button @click="addBox(1)" class="center-v btn-glass">
+                      <img src="img\bloco-de-notas.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                    </button>
+                  </div>
 
-                <div class="back-glass border" :class="active">
-                  <button @click="addBox(4)" class="center-v btn-glass">
-                    <img src="img\velocimetro.png" class="icon-btn" width="40" height="40" draggable="false"/>
-                  </button>
-                </div>
+                  <div class="back-glass border" :class="active">
+                    <button @click="addBox(2)" class="center-v btn-glass">
+                      <img src="img\data-limite.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                    </button>
+                  </div>
 
-                <div class="back-glass border" :class="active">
-                  <button @click="addBox(5)" class="center-v btn-glass">
-                    <img src="img\angulo.png" class="icon-btn" width="40" height="40" draggable="false"/>
-                  </button>
-                </div>
+                  <div class="back-glass border" :class="active">
+                    <button @click="addBox(3)" class="center-v btn-glass">
+                      <img src="img\calculadora.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                    </button>
+                  </div>
 
-                <div class="back-glass border" :class="active">
-                  <button @click="addBox(6)" class="center-v btn-glass">
-                    <img src="img\temperatura.png" class="icon-btn" width="40" height="40" draggable="false"/>
-                  </button>
+                  <div class="back-glass border" :class="active">
+                    <button @click="addBox(4)" class="center-v btn-glass">
+                      <img src="img\velocimetro.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                    </button>
+                  </div>
+
+                  <div class="back-glass border" :class="active">
+                    <button @click="addBox(5)" class="center-v btn-glass">
+                      <img src="img\angulo.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                    </button>
+                  </div>
+
+                  <div class="back-glass border" :class="active">
+                    <button @click="addBox(6)" class="center-v btn-glass">
+                      <img src="img\temperatura.png" class="icon-btn" width="40" height="40" draggable="false"/>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        </div>
 
-        <div id="menu-imagens" class="div_col menu-comp center">
+        <div id="menu-imagens" class="div_col menu-comp center" style="width: 100%;">
           <div class="div_row center" style="flex-wrap: wrap">
           <img class="menu-img" src="img\background1.png" width="50" height="50" @click="changeImage(1)">
           <img class="menu-img" src="img\background2.png" width="50" height="50" @click="changeImage(2)">
@@ -73,6 +73,11 @@
           <img class="menu-img" src="img\background4.png" width="50" height="50" @click="changeImage(4)">
           <img class="menu-img" src="img\background6.png" width="50" height="50" @click="changeImage(6)">
           <img class="menu-img" src="img\background9.png" width="50" height="50" @click="changeImage(9)">
+          <div style="position: relative">
+            <BucketSVG style="position: absolute; pointer-events: none; opacity: 0.5; padding:0.75rem"/>
+            <input type="color" class="inpt-color" @input="inptColor()" v-model="colorBG"/>
+            
+          </div>
           </div>
         </div>
       </div>
@@ -92,7 +97,7 @@
             </div>
             <div class="interno">
               <AddNote v-if="box.type == '1'" :id="box.id" />
-              <DiffDate v-if="box.type == '2'" :id="box.id" />
+              <DiffDate v-if="box.type == '2'" :id="box.id"/>
               <Calculator v-if="box.type == '3'" :id="box.id" />
               <ConvSpeed v-if="box.type == '4'" :id="box.id" />
               <ConvAngle v-if="box.type == '5'" :id="box.id" />
@@ -115,6 +120,8 @@ import ConvTemp from '../../components/ConvTemp.vue'
 import FecharSVG from '../../svg/fechar.vue'
 import PaletaSVG from '../../svg/paleta.vue'
 import CalcUnit from '../../svg/calcunit.vue'
+import BucketSVG from '../../svg/bucket.vue'
+
 export default {
   components: {
     DiffDate,
@@ -126,15 +133,21 @@ export default {
     FecharSVG,
     PaletaSVG,
     CalcUnit,
+    BucketSVG
   },
   data() {
     return {
       boxes: [],
       active: 'yellow',
       count: 0,
+      colorBG: '#ffffff'
     }
   },
   methods: {
+    inptColor() {
+      document.body.style.backgroundImage = 'none';
+      document.body.style.backgroundColor = this.colorBG;
+    },
     addBox(type) {
       this.count++
       this.boxes.push({

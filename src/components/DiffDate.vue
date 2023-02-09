@@ -3,20 +3,15 @@
     <div class="div_col">
       <div :id="this.id+'header'" class="headerTime">
         <div style="font-size: 1.5rem; align-items: center" class="select font-segoe">
-          <div style="display: flex; align-items: center">
-            <img src="img\data-limite.png" style="margin-right: 0.75rem;" width="40" height="40" draggable="false" />
-            <div class="div_col">
-              <span style="font-size: 16pt; font-weight: 500;">Diferença de data e hora</span>
-              <span style="font-size: 10pt;">Date and time difference</span>
-            </div>
+          <div class="div_row center-v">
+            <div class="div_row center-v" v-if="type === 1" style="margin-right: 1rem;"><DiffDH/></div>
+            <div class="div_row center-v" v-if="type === 2" style="margin-right: 1.25rem;"><CalcDH/></div>
+            <img src="img/seta-baixo.png" width="20" height="20"/>
           </div>
 
-          <div class="select-content">
-            <img src="img\calc-data.png" style="margin-right: 0.75rem;" width="40" height="40" draggable="false" />
-            <div class="div_col">
-              <span style="font-size: 16pt; font-weight: 500;">Cálculo de data e hora</span>
-              <span style="font-size: 10pt;">Date and time difference</span>
-            </div>
+          <div class="select-content" @click="alternate()">
+            <CalcDH v-if="type === 1"/>
+            <DiffDH v-if="type === 2"/>
           </div>
         </div>
         <div class="div_row">
@@ -90,13 +85,17 @@
 import PlusSVG from '../svg/plus.vue'
 import MinusSVG from '../svg/minus.vue'
 import EqualsSVG from '../svg/equals.vue'
+import DiffDH from './DiffDate/DiffDateHour.vue'
+import CalcDH from './DiffDate/CalcDateHour.vue'
 
 export default {
   name: 'DiffDate',
   components: {
     PlusSVG,
     MinusSVG,
-    EqualsSVG
+    EqualsSVG,
+    DiffDH,
+    CalcDH
   },
   data() {
     return {
@@ -109,6 +108,7 @@ export default {
       minutos: '-',
       segundos: '-',
       total: 0,
+      type: 1
     }
   },
   methods: {
@@ -214,7 +214,21 @@ export default {
       this.minutos = this.total / 60
       return this.total - Math.trunc(this.minutos) * 60
     },
-    alt() {},
+    alternate() {
+      console.log("entra")
+      console.log(this.type)
+      if(this.type == 1) {
+        console.log(this.type)
+        this.type = 2
+      }
+      else {
+        if(this.type == 2) {
+          console.log(this.type)
+          this.type = 1
+        }
+      }
+      
+    },
   },
   mounted() {
     this.caixas.push([document.getElementById(this.id+'date_i0'), document.getElementById(this.id+'date_f0')]);
@@ -229,6 +243,7 @@ export default {
   cursor: pointer;
   position: relative;
   display: inline-block !important;
+  border-radius: 1.5rem 1.5rem 0 0;
 }
 
 .select:hover .select-content {
@@ -241,6 +256,11 @@ export default {
   font-size: 1.5rem;
   display: none;
   align-items: center;
+  border: 1px solid #0008;
+  border-radius: 0.2rem 0.2rem 1.5rem 1.5rem;
+  padding: 0.5rem;
+  backdrop-filter: blur(5px);
+  background-color: #fff8;
 }
 
 .headerTime {
