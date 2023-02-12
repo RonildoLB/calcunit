@@ -292,9 +292,15 @@ export default {
     result() {
         if(this.countBrackets == 0) {
             if(this.total[this.total.length-1] == ')' && this.number !== "") {
-                this.number = eval(this.total)
+                let total = this.calcResult()
+                this.number = eval(total)
+                this.selected = true
             } else {
-                if(this.number !== "") {
+                if(this.number !== "" && (this.total[this.total.length-1] == '+' ||
+                                          this.total[this.total.length-1] == '-' ||
+                                          this.total[this.total.length-1] == '*' ||
+                                          this.total[this.total.length-1] == '/' ||
+                                          this.total[this.total.length-1] == '^'   )) {
                     this.caixa.push(parseFloat(this.number))
                     let numero = this.number.toString().replace(".", ",")
 
