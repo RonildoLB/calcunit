@@ -506,7 +506,7 @@ export default {
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
-  padding: 0.25rem;
+  padding: 0.25rem 0.2rem;
   background-color: #aaa1;
   border-radius: 0.5rem;
   border: 1px solid #ced4da;
@@ -519,10 +519,6 @@ export default {
 
 @media screen and (max-width: 585px) {
     .divDiff {
-      flex-wrap: wrap;
-      flex-direction: column;
-    }
-    .divCalc {
       flex-wrap: wrap;
       flex-direction: column;
     }
