@@ -209,20 +209,30 @@ export default {
         this.resultClear()
 
         if(this.number != "") {
-            if(this.caixa[this.caixa.length-1] != ")") {
-                let numero = this.number.toString().replace(".", ",")
-                this.caixa.push(parseFloat(this.number))
-                this.caixa.push(signal)
+            if(this.number != "," && this.number != ".") {
+                if(this.caixa[this.caixa.length-1] != ")") {
+                    let numero = this.number.toString().replace(".", ",")
+                    this.caixa.push(parseFloat(this.number))
+                    this.caixa.push(signal)
 
-                if(this.number < 0){
-                    this.total = this.total + '(' + numero + ')' + signal
+                    if(numero[0] == ',' || numero[0] == '.') {
+                        numero = '0' + numero  
+                    }
+
+                    if(numero[numero.length-1] == ',') {
+                        numero = numero.replace(",", "")
+                    }
+
+                    if(this.number < 0){
+                        this.total = this.total + '(' + numero + ')' + signal
+                    }
+                    else {
+                        this.total = this.total + numero + signal
+                    }
+                } else {
+                    this.caixa.push(signal)
+                    this.total = this.total + signal
                 }
-                else {
-                    this.total = this.total + numero + signal
-                }
-            } else {
-                this.caixa.push(signal)
-                this.total = this.total + signal
             }
         } else {
             if(this.total != "") {
@@ -290,7 +300,7 @@ export default {
         return num.toString()
     },
     result() {
-        if(this.countBrackets == 0) {
+        if(this.countBrackets == 0 && this.number != "," && this.number != ".") {
             if(this.total[this.total.length-1] == ')' && this.number !== "") {
                 let total = this.calcResult()
                 this.number = eval(total)
@@ -303,6 +313,14 @@ export default {
                                           this.total[this.total.length-1] == '^'   )) || this.total == "") {
                     this.caixa.push(parseFloat(this.number))
                     let numero = this.number.toString().replace(".", ",")
+
+                    if(numero[0] == ',' || numero[0] == '.') {
+                        numero = '0' + numero    
+                    }
+
+                    if(numero[numero.length-1] == ',') {
+                        numero = numero.replace(",", "")
+                    }
 
                     if(this.number < 0){
                         this.total = this.total + '(' + numero + ')'
