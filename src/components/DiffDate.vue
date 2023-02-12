@@ -479,9 +479,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eeee;
+  background-color: #fff5;
+  border: 2px solid #eee8;
   margin: -5px;
   z-index: 1;
+  backdrop-filter: blur(5px);
 }
 .form-text > span {
   font-size: 0.9rem;
