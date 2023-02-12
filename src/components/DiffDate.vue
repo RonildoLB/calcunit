@@ -39,35 +39,48 @@
       </div>
 
       <div :id="this.id+'calcTime'" class="div_col" style="padding-bottom: 1rem;" v-show="type == 2">
-        <div class="div_row center">
+        <div class="div_col center">
+          <div class="div_row" style="width: 100%; padding: 0 0.25rem">
+            <div class="form-text" style="width: 100%;">
+              <span class="font-segoe">anos</span>
+            </div>
+            <div class="form-text" style="width: 100%;">
+              <span class="font-segoe">sem</span>
+            </div>
+            <div class="form-text" style="width: 100%;">
+              <span class="font-segoe">dias</span>
+            </div>
+            <div class="form-text" style="width: 100%;">
+              <span class="font-segoe">horas</span>
+            </div>
+            <div class="form-text" style="width: 100%;">
+              <span class="font-segoe">min</span>
+            </div>
+            <div class="form-text" style="width: 100%;">
+              <span class="font-segoe">seg</span>
+            </div>
+          </div>
           <div class="divCalc">
             <div style="display: flex; flex-wrap: nowrap">
               <div class="form-text">
-                <input :id="this.id+'inpt_ano_0'" type="number" maxlength="5"/>
-                <span class="font-segoe">anos</span>
+                <input :id="this.id+'inpt_ano_0'" type="number"/>
               </div>
               <div class="form-text" >
                 <input :id="this.id+'inpt_sem_0'" type="number"/>
-                <span class="font-segoe">sem</span>
               </div>
               <div class="form-text" >
                 <input :id="this.id+'inpt_dia_0'" type="number"/>
-                <span class="font-segoe">dias</span>
               </div>
             </div>
-
             <div style="display: flex; flex-wrap: nowrap">
               <div class="form-text" >
                 <input :id="this.id+'inpt_hora_0'" type="number"/>
-                <span class="font-segoe">horas</span>
               </div>
               <div class="form-text">
                 <input :id="this.id+'inpt_min_0'" type="number" />
-                <span class="font-segoe">min</span>
               </div>
               <div class="form-text" >
                 <input :id="this.id+'inpt_seg_0'" type="number"/>
-                <span class="font-segoe">seg</span>
               </div>
             </div>
           </div>
@@ -182,12 +195,12 @@ export default {
           '<div id="'+this.id+'boxC' +
             this.countC +
             '"><div class="center-h"><div class="plus">+</div></div><div class="div_row center"><div class="divCalc"><div style="display: flex; flex-wrap: nowrap"><div class="form-text"><input id="' +
-          this.id+'inpt_ano_' + this.countC + '" type="number"/><span class="font-segoe">anos</span></div><div class="form-text" ><input id="' +
-          this.id+'inpt_sem_' + this.countC + '" type="number"/><span class="font-segoe">sem</span></div><div class="form-text" ><input id="' +
-          this.id+'inpt_dia_' + this.countC + '" type="number"/><span class="font-segoe">dias</span></div></div><div style="display: flex; flex-wrap: nowrap"><div class="form-text" ><input id="' +
-          this.id+'inpt_hora_' + this.countC +'" type="number"/><span class="font-segoe">horas</span></div><div class="form-text"><input id="' +
-          this.id+'inpt_min_' + this.countC +'" type="number" /><span class="font-segoe">min</span></div><div class="form-text" ><input id="' +
-          this.id+'inpt_seg_' + this.countC +'" type="number"/><span class="font-segoe">seg</span></div></div></div></div></div>'
+          this.id+'inpt_ano_' + this.countC + '" type="number"/></div><div class="form-text" ><input id="' +
+          this.id+'inpt_sem_' + this.countC + '" type="number"/></div><div class="form-text" ><input id="' +
+          this.id+'inpt_dia_' + this.countC + '" type="number"/></div></div><div style="display: flex; flex-wrap: nowrap"><div class="form-text" ><input id="' +
+          this.id+'inpt_hora_' + this.countC +'" type="number"/></div><div class="form-text"><input id="' +
+          this.id+'inpt_min_' + this.countC +'" type="number" /></div><div class="form-text" ><input id="' +
+          this.id+'inpt_seg_' + this.countC +'" type="number"/></div></div></div></div></div>'
         )
 
         this.caixasC.push([document.getElementById(this.id+'inpt_ano_'+this.countC), 
@@ -396,6 +409,7 @@ export default {
     font-weight:unset !important;
     min-width: 3.5rem !important;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    width: 100%;
 }
 .form-text > input:focus {
     outline: 0;
@@ -438,7 +452,7 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
 }
 .headerTime .btn {
   display: flex;
@@ -486,7 +500,7 @@ export default {
   backdrop-filter: blur(5px);
 }
 .form-text > span {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .divDiff {

@@ -18,7 +18,7 @@
           </button>
         </div>
     </div>
-    <textarea v-model="textarea" :id="this.id+'textarea'" class="form-control" rows="9" cols="22"></textarea>
+    <textarea v-model="textarea" :id="this.id+'textarea'" class="form-control" rows="9" cols="25"></textarea>
   </div>
 </template>
 
@@ -67,8 +67,7 @@ textarea {
   min-width: 10rem;
   min-height: 2.5em;
   box-shadow: inset 0 0 5px 1px #0001;
-  font-size: 14pt !important;
-  font-weight: 500;
+  font-size: 14.5pt !important;
 }
 .lbl_copy {
   padding: 0.4rem 1rem 0.5rem 1rem;
