@@ -2,34 +2,74 @@
   <div>
     <div class="div_col">
       <div :id="this.id+'header'" class="headerTime">
-        <div style="font-size: 1.5rem; align-items: center" class="select font-segoe">
-          <div class="div_row center-v">
-            <div class="div_row center-v" v-if="type === 1" style="margin-right: 1rem;"><DiffDH/></div>
-            <div class="div_row center-v" v-if="type === 2" style="margin-right: 1.25rem;"><CalcDH/></div>
-            <img src="img/seta-baixo.png" width="20" height="20"/>
-          </div>
+        <div style="width: 100%; height: 63px">
+          <div style="font-size: 1.5rem; align-items: center; z-index: 2" class="select font-segoe" @click="option()">
+            <div class="option div_row center-v">
+              <div class="div_row center-v" v-if="type === 1" style="margin-right: 0.5rem;"><DiffDH/></div>
+              <div class="div_row center-v" v-if="type === 2" style="margin-right: 0.5rem;"><CalcDH/></div>
+              <img src="img/seta-baixo.png" width="20" height="20"/>
+            </div>
 
-          <div class="select-content" @click="alternate()">
-            <CalcDH v-if="type === 1"/>
-            <DiffDH v-if="type === 2"/>
+            <div :id="this.id+'option'" class="select-content" @click="alternate()">
+              <CalcDH v-if="type === 1"/>
+              <DiffDH v-if="type === 2"/>
+            </div>
           </div>
         </div>
-        <div class="div_row">
-          <button class="btn btn-blue" style="margin-right: 5px" @click="add(this.id)">
-            <PlusSVG/>
-          </button>
-          <button class="btn btn-blue" @click="remove(this.id)">
-            <MinusSVG/>
-          </button>
+        <div>
+          <div class="btn-add">
+            <button class="btn btn-blue btn-plus" @click="add(this.id)">
+              <PlusSVG/>
+            </button>
+            <button class="btn btn-blue" @click="remove(this.id)">
+              <MinusSVG/>
+            </button>
+          </div>
         </div>
       </div>
 
-      <div :id="this.id+'calcTime'" class="div_col" style="padding-bottom: 1rem;">
+      <div :id="this.id+'diffTime'" class="div_col" style="padding-bottom: 1rem;" v-show="type == 1">
         <div class="div_row center">
           <div class="divDiff">
             <input :id="this.id+'date_i0'" type="datetime-local" step="1" class="form-control" />
             <div>&nbsp;-&nbsp;</div>
             <input :id="this.id+'date_f0'" type="datetime-local" step="1" class="form-control" />
+          </div>
+        </div>
+      </div>
+
+      <div :id="this.id+'calcTime'" class="div_col" style="padding-bottom: 1rem;" v-show="type == 2">
+        <div class="div_row center">
+          <div class="divCalc">
+            <div style="display: flex; flex-wrap: nowrap">
+              <div class="form-text">
+                <input :id="this.id+'inpt_ano_0'" type="number" maxlength="5"/>
+                <span class="font-segoe">anos</span>
+              </div>
+              <div class="form-text" >
+                <input :id="this.id+'inpt_sem_0'" type="number"/>
+                <span class="font-segoe">sem</span>
+              </div>
+              <div class="form-text" >
+                <input :id="this.id+'inpt_dia_0'" type="number"/>
+                <span class="font-segoe">dias</span>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-wrap: nowrap">
+              <div class="form-text" >
+                <input :id="this.id+'inpt_hora_0'" type="number"/>
+                <span class="font-segoe">horas</span>
+              </div>
+              <div class="form-text">
+                <input :id="this.id+'inpt_min_0'" type="number" />
+                <span class="font-segoe">min</span>
+              </div>
+              <div class="form-text" >
+                <input :id="this.id+'inpt_seg_0'" type="number"/>
+                <span class="font-segoe">seg</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -99,8 +139,10 @@ export default {
   },
   data() {
     return {
-      caixas: [],
-      count: 0,
+      caixasD: [],
+      caixasC: [],
+      countC: 0,
+      countD: 0,
       anos: '-',
       semanas: '-',
       dias: '-',
@@ -108,46 +150,122 @@ export default {
       minutos: '-',
       segundos: '-',
       total: 0,
-      type: 1
+      type: 2,
+
     }
   },
   methods: {
-    add(id) {
-      this.count++
-      let calcTime = document.getElementById(id+'calcTime')
-      calcTime?.insertAdjacentHTML(
-        'beforeend',
-        '<div id="'+this.id+'box' +
-          this.count +
-          '"><div class="div_row center"><div class="div_col" style="width: 100%;"><center><div class="plus">+</div></center><div class="divDiff"><input id="'+this.id+'date_i' +
-          this.count +
-          '" type="datetime-local" step="1" class="form-control"/>&nbsp;-&nbsp;<input id="'+this.id+'date_f' +
-          this.count +
-          '" type="datetime-local" step="1" class="form-control"/></div></div></div></div>'
-      )
-      this.caixas.push([document.getElementById(this.id+'date_i'+this.count), document.getElementById(this.id+'date_f'+this.count)])
+    add(id) {      
+      if(this.type == 1) {
+        let diffTime = document.getElementById(id+'diffTime')
+        this.countD++
+
+        diffTime?.insertAdjacentHTML(
+          'beforeend',
+          '<div id="'+this.id+'boxD' +
+            this.countD +
+            '"><div class="div_row center"><div class="div_col" style="width: 100%;"><div class="center-h"><div class="plus">+</div></div><div class="divDiff"><input id="'+this.id+'date_i' +
+            this.countD +
+            '" type="datetime-local" step="1" class="form-control"/>&nbsp;-&nbsp;<input id="'+this.id+'date_f' +
+            this.countD +
+            '" type="datetime-local" step="1" class="form-control"/></div></div></div></div>'
+        )
+
+        this.caixasD.push([document.getElementById(this.id+'date_i'+this.countD), document.getElementById(this.id+'date_f'+this.countD)])
+      }
+      if(this.type == 2) {
+        let calcTime = document.getElementById(id+'calcTime')
+        this.countC++
+
+        calcTime?.insertAdjacentHTML(
+          'beforeend',
+          '<div id="'+this.id+'boxC' +
+            this.countC +
+            '"><div class="center-h"><div class="plus">+</div></div><div class="div_row center"><div class="divCalc"><div style="display: flex; flex-wrap: nowrap"><div class="form-text"><input id="' +
+          this.id+'inpt_ano_' + this.countC + '" type="number"/><span class="font-segoe">anos</span></div><div class="form-text" ><input id="' +
+          this.id+'inpt_sem_' + this.countC + '" type="number"/><span class="font-segoe">sem</span></div><div class="form-text" ><input id="' +
+          this.id+'inpt_dia_' + this.countC + '" type="number"/><span class="font-segoe">dias</span></div></div><div style="display: flex; flex-wrap: nowrap"><div class="form-text" ><input id="' +
+          this.id+'inpt_hora_' + this.countC +'" type="number"/><span class="font-segoe">horas</span></div><div class="form-text"><input id="' +
+          this.id+'inpt_min_' + this.countC +'" type="number" /><span class="font-segoe">min</span></div><div class="form-text" ><input id="' +
+          this.id+'inpt_seg_' + this.countC +'" type="number"/><span class="font-segoe">seg</span></div></div></div></div></div>'
+        )
+
+        this.caixasC.push([document.getElementById(this.id+'inpt_ano_'+this.countC), 
+                          document.getElementById(this.id+'inpt_sem_'+this.countC), 
+                          document.getElementById(this.id+'inpt_dia_'+this.countC), 
+                          document.getElementById(this.id+'inpt_hora_'+this.countC), 
+                          document.getElementById(this.id+'inpt_min_'+this.countC), 
+                          document.getElementById(this.id+'inpt_seg_'+this.countC)])
+      }
+
+      
     },
     remove(id) {
-      if (this.count > 0) {
-        const element = document.getElementById(this.id+'box'+this.count)
-        element.remove()
-        this.caixas.pop([])
-        this.count--
-        console.log(this.caixas)
+      if(this.type == 1) {
+        if (this.countD > 0) {
+          const element = document.getElementById(this.id+'boxD'+this.countD)
+          element.remove()
+          this.caixasD.pop([])
+          this.countD--
+        }
+      }
+      if(this.type == 2) {
+        if (this.countC > 0) {
+          const element = document.getElementById(this.id+'boxC'+this.countC)
+          element.remove()
+          this.caixasC.pop([])
+          this.countC--
+        }
       }
     },
     calc(id) {
       this.total = 0
-      let time1
-      let time2
-      console.log(this.caixas)
-      this.caixas.forEach(element => {
-        if (element[0].value != 0 && element[0].value != NaN && element[1].value != 0 && element[1].value != NaN) {
-          time1 = new Date(element[0].value)
-          time2 = new Date(element[1].value)
-          this.total = this.total + (time2 - time1) / 1000
-        }
-      })
+      console.log("caixasD")
+      console.log(this.caixasD)
+
+      if(this.type == 1) {
+        let time1
+        let time2
+        this.caixasD.forEach(element => {
+          if (element[0].value != 0 && element[0].value != NaN && element[1].value != 0 && element[1].value != NaN) {
+            time1 = new Date(element[0].value)
+            time2 = new Date(element[1].value)
+            this.total = this.total + (time2 - time1) / 1000
+          }
+        })
+      }
+
+      if(this.type == 2) {
+        let ano, sem, dia, hora, min, seg
+        this.caixasC.forEach(element => {
+          console.log("a")
+          console.log(element)
+          let soma = 0
+          if (element[0].value != NaN &&
+              element[1].value != NaN &&
+              element[2].value != NaN &&
+              element[3].value != NaN &&
+              element[4].value != NaN &&
+              element[5].value != NaN) {
+            ano = element[0].value
+            sem = element[1].value
+            dia = element[2].value
+            hora = element[3].value
+            min = element[4].value
+            seg = element[5].value
+
+            soma = ano * (365.25*24*60*60) +
+                   sem * (7*24*60*60) +
+                   dia * (24*60*60) +
+                   hora * (60*60) +
+                   min * 60 +
+                   seg * 1
+
+            this.total = this.total + soma
+          }
+        })
+      }
+
       this.anos = "-"
       this.semanas = "-"
       this.dias = "-"
@@ -215,51 +333,103 @@ export default {
       return this.total - Math.trunc(this.minutos) * 60
     },
     alternate() {
-      console.log("entra")
-      console.log(this.type)
       if(this.type == 1) {
-        console.log(this.type)
         this.type = 2
       }
       else {
         if(this.type == 2) {
-          console.log(this.type)
           this.type = 1
         }
       }
-      
     },
+    option() {
+      if(document.getElementById(this.id+'option').style.display == '' ||
+      document.getElementById(this.id+'option').style.display == 'none') {
+        document.getElementById(this.id+'option').style.display = 'flex'
+      } else {
+        document.getElementById(this.id+'option').style.display = 'none'
+      }
+    }
   },
   mounted() {
-    this.caixas.push([document.getElementById(this.id+'date_i0'), document.getElementById(this.id+'date_f0')]);
+    this.caixasD.push([document.getElementById(this.id+'date_i0'), document.getElementById(this.id+'date_f0')]);
+
+    this.caixasC.push([document.getElementById(this.id+'inpt_ano_0'), 
+        document.getElementById(this.id+'inpt_sem_0'), 
+        document.getElementById(this.id+'inpt_dia_0'), 
+        document.getElementById(this.id+'inpt_hora_0'), 
+        document.getElementById(this.id+'inpt_min_0'), 
+        document.getElementById(this.id+'inpt_seg_0')])
+
+    this.add(this.id)
   },
   props: {
     id: Number,
+    cor: String
   },
 }
 </script>
 <style>
-.select {
-  cursor: pointer;
-  position: relative;
-  display: inline-block !important;
-  border-radius: 1.5rem 1.5rem 0 0;
+.btn-plus {
+  margin-right: 5px;
 }
-
-.select:hover .select-content {
+.btn-add {
   display: flex;
   flex-direction: row;
 }
 
-.select-content {
+.form-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2px;
+}
+.form-text > input{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0.375rem 0.375rem;
+    font-size: 1.25rem !important;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #88888850;
+    border-radius: 0.25rem;
+    font-weight:unset !important;
+    min-width: 3.5rem !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.form-text > input:focus {
+    outline: 0;
+    border-color: #6db8cc;
+    box-shadow: 0 0 8px rgb(155 225 255 / 100%);
+}
+
+.option {
+  border-radius: 1.25rem;
+  padding: 0.5rem;
+}
+.option:hover {
+  background-color: #fff8;
+}
+
+.select {
+  cursor: pointer;
   position: absolute;
+  display: inline-block !important;
+  border-radius: 1.25rem;
+  border: 1px solid #0003;
+  backdrop-filter: blur(5px);
+  box-shadow: inset 0 0 4px rgb(255 255 255 / 100%);
+}
+
+.select-content {
   font-size: 1.5rem;
   display: none;
   align-items: center;
-  border: 1px solid #0008;
   border-radius: 0.2rem 0.2rem 1.5rem 1.5rem;
   padding: 0.5rem;
-  backdrop-filter: blur(5px);
+}
+.select-content:hover {
+  border-radius: 1.25rem;
   background-color: #fff8;
 }
 
@@ -299,9 +469,24 @@ export default {
   padding: 0 10px;
 }
 .plus {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-weight: bold;
+  font-family: lato;
+  font-weight: 900;
+  box-shadow: 0 0 2px 2px rgb(0 0 0 / 25%);
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  line-height: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeee;
+  margin: -5px;
+  z-index: 1;
 }
+.form-text > span {
+  font-size: 0.9rem;
+}
+
 .divDiff {
   width: 100%;
   display: flex;
@@ -309,19 +494,43 @@ export default {
   justify-content: center;
   flex-wrap: nowrap;
   padding: 0.25rem;
-  background-color: #a551;
+  background-color: #aaa1;
   border-radius: 0.5rem;
   border: 1px solid #ced4da;
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.25);
 }
+.divCalc {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 0.25rem;
+  background-color: #aaa1;
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.25);
+}
+
 .form-control {
   width: 100%;
 }
 
 @media screen and (max-width: 585px) {
     .divDiff {
-        flex-wrap: wrap;
-        flex-direction: column;
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+    .divCalc {
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+    .btn-add {
+      display: flex;
+      flex-direction: column;
+    }
+    .btn-plus {
+      margin-right: 0;
     }
 }
 </style>

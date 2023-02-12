@@ -1,6 +1,6 @@
 <template>
   <div class="div_col">
-    <div class="header">
+    <div class="header" style="padding-bottom: 0;">
       <div style="font-size: 1.5rem; display: flex; align-items: center" class="font-segoe">
         <img src="img\velocimetro.png" style="margin-right: 0.75rem;" width="40" height="40" draggable="false"/>
 
