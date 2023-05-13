@@ -250,10 +250,6 @@
     height: 70px;
 }
 
-#menu-imagens {
-
-}
-
 .pink {
     background-color: #ffcce5;
 }
@@ -283,7 +279,7 @@
     background: linear-gradient(#d7aeff 0%, #e7cfff 50%);
 }
 .slctColor.yellow {
-    background: linear-gradient(#ffea76 0%, #fff2ab 50%);
+    background: linear-gradient(#ffea76 0%, #ffe571 50%);
 }
   
 .transform {
@@ -292,5 +288,5 @@
 }
   
 .yellow {
-    background-color: #fff2ab;
+    background-color: #ffe571;
 }

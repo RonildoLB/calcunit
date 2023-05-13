@@ -3,16 +3,18 @@
     <div class="div_col">
       <div :id="this.id+'header'" class="headerTime">
         <div style="width: 100%; height: 63px">
-          <div style="font-size: 1.5rem; align-items: center; z-index: 2" class="select font-segoe" @click="option()">
-            <div class="option div_row center-v">
-              <div class="div_row center-v" v-if="type === 1" style="margin-right: 0.5rem;"><DiffDH/></div>
-              <div class="div_row center-v" v-if="type === 2" style="margin-right: 0.5rem;"><CalcDH/></div>
-              <img src="img/seta-baixo.png" width="20" height="20"/>
-            </div>
+          <div class="select-out">
+            <div style="font-size: 1.5rem; align-items: center; z-index: 2" class="select font-segoe" @click="option()">
+              <div class="option div_row center-v">
+                <div class="div_row center-v" v-if="type === 1" style="margin-right: 0.5rem;"><DiffDH/></div>
+                <div class="div_row center-v" v-if="type === 2" style="margin-right: 0.5rem;"><CalcDH/></div>
+                <img src="img/seta-baixo.png" width="20" height="20"/>
+              </div>
 
-            <div :id="this.id+'option'" class="select-content" @click="alternate()">
-              <CalcDH v-if="type === 1"/>
-              <DiffDH v-if="type === 2"/>
+              <div :id="this.id+'option'" class="select-content" @click="alternate()">
+                <CalcDH v-if="type === 1"/>
+                <DiffDH v-if="type === 2"/>
+              </div>
             </div>
           </div>
         </div>
@@ -418,7 +420,7 @@ export default {
 }
 
 .option {
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   padding: 0.5rem;
 }
 .option:hover {
@@ -427,12 +429,17 @@ export default {
 
 .select {
   cursor: pointer;
-  position: absolute;
   display: inline-block !important;
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   border: 1px solid #0003;
   backdrop-filter: blur(5px);
-  box-shadow: inset 0 0 4px rgb(255 255 255 / 100%);
+  box-shadow: inset 0 0 15px 0px rgb(255 255 255 / 80%);
+}
+
+.select-out {
+  display: inline-block !important;
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.25);
 }
 
 .select-content {
@@ -443,7 +450,7 @@ export default {
   padding: 0.5rem;
 }
 .select-content:hover {
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   background-color: #fff8;
 }
 
