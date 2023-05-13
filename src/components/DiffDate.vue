@@ -422,6 +422,7 @@ export default {
 .option {
   border-radius: 1rem;
   padding: 0.5rem;
+  backdrop-filter: blur(10px);
 }
 .option:hover {
   background-color: #fff8;
@@ -448,6 +449,7 @@ export default {
   align-items: center;
   border-radius: 0.2rem 0.2rem 1.5rem 1.5rem;
   padding: 0.5rem;
+  backdrop-filter: blur(10px);
 }
 .select-content:hover {
   border-radius: 1rem;
