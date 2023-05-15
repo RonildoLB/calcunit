@@ -434,13 +434,13 @@ export default {
   border-radius: 1rem;
   border: 1px solid #0003;
   backdrop-filter: blur(5px);
-  box-shadow: inset 0 0 15px 0px rgb(255 255 255 / 80%);
+  box-shadow: inset 0 0 4px 0px rgb(255 255 255 / 100%);
 }
 
 .select-out {
   display: inline-block !important;
   border-radius: 1rem;
-  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.25);
 }
 
 .select-content {
