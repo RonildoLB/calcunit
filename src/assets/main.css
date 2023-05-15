@@ -45,9 +45,9 @@ body::-webkit-scrollbar-thumb:hover {
     background-clip: content-box;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 470px) {
     body {
-        zoom: 80%;
+        zoom: 75%;
     }
 }
 
