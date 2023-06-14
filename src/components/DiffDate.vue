@@ -519,7 +519,7 @@ export default {
   justify-content: center;
   flex-wrap: nowrap;
   padding: 0.25rem;
-  background: linear-gradient(0deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.05) 73%,hsla(0,0%,100%,.35) 79%);
+  background-image: linear-gradient(0deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.05) 73%,hsla(0,0%,100%,.35) 79%);
   border-radius: .5rem;
   border: 1px solid #8888;
   box-shadow: 0 0 2px 0px rgba(0,0,0,.25);
@@ -533,7 +533,7 @@ export default {
   justify-content: center;
   flex-wrap: nowrap;
   padding: 0.25rem;
-  background: linear-gradient(0deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.05) 73%,hsla(0,0%,100%,.35) 79%);
+  background-image: linear-gradient(0deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.05) 73%,hsla(0,0%,100%,.35) 79%);
   border-radius: .5rem;
   border: 1px solid #8888;
   box-shadow: 0 0 2px 0px rgba(0,0,0,.25);
