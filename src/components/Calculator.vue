@@ -447,7 +447,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .lbl_calc {
     overflow-x: scroll;
     white-space: nowrap;
@@ -492,6 +492,6 @@ export default {
 }
  button {
     font-family: Lato;
-    margin: 1px
+    margin: 1px;
  }
 </style>
