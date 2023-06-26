@@ -420,7 +420,7 @@ export default {
 }
 
 .option {
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
   padding: 0.5rem;
   backdrop-filter: blur(10px);
 }
