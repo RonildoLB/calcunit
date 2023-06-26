@@ -425,6 +425,7 @@ export default {
   backdrop-filter: blur(10px);
 }
 .option:hover {
+  border-radius: 1rem;
   background-color: #fff8;
 }
 
