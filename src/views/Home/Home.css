@@ -32,7 +32,7 @@
     border-radius: 1rem;
 }
 .btn-glass:hover {
-    background: linear-gradient(180deg,rgba(235,248,242,.54),rgba(243,248,255,.0) 0%,hsla(0,0%,91%,.2) 83%,hsla(0,0%,100%,.55));
+    background: linear-gradient(180deg,rgba(243,248,255,.0) 0%,hsla(0,0%,91%,.2) 83%,hsla(0,0%,100%,.55));
     box-shadow: 0 0px 1px 1px hsla(0,0%,0%,.25);
 }
 .btn-glass:hover .icon-btn {
