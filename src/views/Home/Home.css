@@ -25,7 +25,7 @@
 .btn-glass {
     height: 100%;
     padding: 0.75rem;
-    background: linear-gradient(180deg,rgb(139 139 139 / 5%)0%,rgb(255 255 255 / 15%) 50%,hsl(0deg 0% 100% / 41%) 100%);
+    background: linear-gradient(180deg,rgb(139 139 139 / 5%) 0%,rgb(255 255 255 / 15%) 50%,hsl(0deg 0% 100% / 41%) 100%);
     border: 2px solid #fafafa60;
     box-shadow: 0 2px 3px hsla(0,0%,4%,.25);
     cursor: pointer;
