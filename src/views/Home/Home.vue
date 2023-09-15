@@ -1,14 +1,14 @@
 <template>
-  <div id="main">
+  <div id="main" style="overflow-x: clip;">
     <div id="full" class="div_row">
       <div style="height: 100%; background-color: #141414">
         <div class="div_row center" style="flex-wrap: wrap; margin-top: 1rem">
-          <img class="menu-img" src="img\background1.png" @click="changeImage(1)">
+          <img class="menu-img" src="img\background6.png" @click="changeImage(1)">
           <img class="menu-img" src="img\background2.png" @click="changeImage(2)">
-          <img class="menu-img" src="img\background3.png" @click="changeImage(3)">
-          <img class="menu-img" src="img\background4.png" @click="changeImage(4)">
-          <img class="menu-img" src="img\background6.png" @click="changeImage(6)">
-          <img class="menu-img" src="img\background9.png" @click="changeImage(9)">
+          <img class="menu-img" src="img\background1.png" @click="changeImage(3)">
+          <img class="menu-img" src="img\background9.png" @click="changeImage(4)">
+          <img class="menu-img" src="img\background3.png" @click="changeImage(6)">
+          <img class="menu-img" src="img\background4.png" @click="changeImage(9)">
           <div style="position: relative">
             <BucketSVG class="bucketcolor" :style="'fill:'+bucketColor"/>
             <input type="color" class="inpt-color" @input="inptColor()" v-model="colorBG"/>
@@ -22,8 +22,8 @@
     </div>
 
     <div class="content">
-      <div style="margin: auto;">
-        <div class="menu-base div_row" style="position: relative; z-index: 100000;">
+      <div style="margin: auto; width: 100%;">
+        <div class="menu-base div_row" style="position: relative; z-index: 100000; width: 100%;">
           <div id="menu-logo" class="menu-comp center-v" style="width: 100%; position: relative">
             <CalcUnit id="logo" style="pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);"/>
 
@@ -93,12 +93,12 @@
 
           <div id="menu-imagens" class="div_col menu-comp center" style="width: 100%; z-index: -1;">
             <div class="div_row center" style="flex-wrap: wrap">
-            <img class="menu-img" src="img\background1.png" @click="changeImage(1)">
+            <img class="menu-img" src="img\background6.png" @click="changeImage(6)">
             <img class="menu-img" src="img\background2.png" @click="changeImage(2)">
+            <img class="menu-img" src="img\background1.png" @click="changeImage(1)">
+            <img class="menu-img" src="img\background9.png" @click="changeImage(9)">
             <img class="menu-img" src="img\background3.png" @click="changeImage(3)">
             <img class="menu-img" src="img\background4.png" @click="changeImage(4)">
-            <img class="menu-img" src="img\background6.png" @click="changeImage(6)">
-            <img class="menu-img" src="img\background9.png" @click="changeImage(9)">
             <div style="position: relative">
               <BucketSVG class="bucketcolor" :style="'fill:'+bucketColor"/>
               <input type="color" class="inpt-color" @input="inptColor()" v-model="colorBG"/>
